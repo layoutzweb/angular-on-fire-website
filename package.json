@@ -1,8 +1,8 @@
 {
-  "name": "angular-on-fire",
+  "name": "angular-on-fire-website",
   "version": "0.0.0",
   "author": "Jair Milanes <jmilanes@dashfy.ca> (https://dashfy.ca)",
-  "repository": "https://github.com/layoutzweb/angular-on-fire",
+  "repository": "https://github.com/layoutzweb/angular-on-fire-website",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
