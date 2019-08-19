@@ -50,7 +50,7 @@ describe('Jumbotron', () => {
   it('should have a main action wth correct url', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelectorAll('.aof-main-action').length)
-        .toEqual(1);
+        .toEqual(2);
     expect(compiled.querySelector(
         '.aof-main-action[href=\'https://github.com/layoutzweb/angular-on-fire\']'
     )).toBeTruthy();
