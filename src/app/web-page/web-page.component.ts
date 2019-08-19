@@ -1,8 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
-import {environment} from '../../environments/environment';
 import {MarkdownService} from 'ngx-markdown';
+import {environment} from '../../environments/environment';
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
+import {HttpClient} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -26,10 +29,13 @@ export class WebPageComponent implements OnInit {
         }
     };
     docsSource = 'https://raw.githubusercontent.com/layoutzweb/angular-on-fire/next/README.md';
+    manifestUrl = 'https://cdn.jsdelivr.net/gh/layoutzweb/angular-on-fire@master/package.json';
     docsMarkdown: string;
+    version$: Observable<string>;
 
     constructor(private title: Title,
                 private meta: Meta,
+                private http: HttpClient,
                 private markdownService: MarkdownService) {
         this.config = {...this.defaults, ...(environment.page || {})};
     }
@@ -37,12 +43,20 @@ export class WebPageComponent implements OnInit {
     ngOnInit(): void {
         this.seo();
         this.docs();
+        this.version();
+        this.version$ = this.version();
     }
 
     toString(object: any): string {
         return JSON.stringify(object, null, 4);
     }
 
+    version(): Observable<string> {
+        return this.http.get(this.manifestUrl).pipe(
+            map((response: any) => response.version),
+            catchError(() => null)
+        );
+    }
 
     docs(): void {
         this.markdownService.getSource(this.docsSource)

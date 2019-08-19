@@ -22,7 +22,7 @@ export class ScrollTopComponent {
     on$: Observable<boolean>;
 
     constructor(private scroll: ScrollService) {
-        this.on$ = this.scroll.position$.pipe(map((e) => e.top > 300))
+        this.on$ = this.scroll.position$.pipe(map((e) => e.top > 300));
     }
 
     scrollTo(event: MouseEvent): void {

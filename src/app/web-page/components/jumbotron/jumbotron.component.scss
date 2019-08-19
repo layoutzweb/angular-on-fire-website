@@ -1,26 +1,5 @@
 @import '../../partials/colors';
 
-@-webkit-keyframes animatedGradient {
-  0%{background-position:50% 0%}
-  50%{background-position:51% 100%}
-  100%{background-position:50% 0%}
-}
-@-moz-keyframes animatedGradient {
-  0%{background-position:50% 0%}
-  50%{background-position:51% 100%}
-  100%{background-position:50% 0%}
-}
-@-o-keyframes animatedGradient {
-  0%{background-position:50% 0%}
-  50%{background-position:51% 100%}
-  100%{background-position:50% 0%}
-}
-@keyframes animatedGradient {
-  0%{background-position:50% 0%}
-  50%{background-position:51% 100%}
-  100%{background-position:50% 0%}
-}
-
 .aof-jumbotron {
   overflow: hidden;
   height: 800px;
@@ -30,7 +9,6 @@
   align-items: center;
   padding: 0 20px;
   position: relative;
-
 
   .aof-angular-logo {
     height: 200px;
@@ -91,11 +69,16 @@
     background-color: black;
     border-radius: 31px;
     margin-top: 40px;
-    color: #E3740F;
+    color: $primaryColor;
 
     & > strong {
       color: white;
     }
+  }
+
+  .aof-jumbotron-version {
+    padding-top: 20px;
+    text-align: center;
   }
 
   & > * {
@@ -105,22 +88,14 @@
   .aof-jumbotron-background {
     position: absolute;
     top: 0;
-    bottom: 113px;
-    left: 0;
-    right: 0;
-    background: linear-gradient(360deg, $primaryColor, $accentColor);
-    background-size: 100%;
-    /* -webkit-animation: animatedGradient 30s ease infinite;
-    -moz-animation: animatedGradient 30s ease infinite;
-    -o-animation: animatedGradient 30s ease infinite;
-    animation: animatedGradient 30s ease infinite; */
-  }
-
-  .aof-jumbotron-bottom-frame {
-    position: absolute;
-    top: auto;
     bottom: 0;
     left: 0;
     right: 0;
+
+    & > div:first-child {
+      background: linear-gradient(360deg, $primaryColor, $accentColor);
+      background-size: 100%;
+    }
   }
 }
+

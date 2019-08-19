@@ -18,6 +18,7 @@ import {
 export class JumbotronComponent {
 
     @Input() name: string;
+    @Input() version: string;
 
     innerHeight: number = window.innerHeight;
 
@@ -25,7 +26,9 @@ export class JumbotronComponent {
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
-        this.innerHeight = window.innerHeight;
+        if (window.innerHeight > this.innerHeight) {
+            this.innerHeight = window.innerHeight;
+        }
     }
 }
 

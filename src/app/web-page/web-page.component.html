@@ -1,17 +1,17 @@
 <div class="aof-page" scroll-directive>
-    <app-jumbotron name="page-top" #jumbotronRef></app-jumbotron>
+    <app-jumbotron name="page-top" [version]="version$ | async" #jumbotronRef></app-jumbotron>
 
     <app-content-section
             name="tech"
             title="Packet With Power"
-            description="Angular on Fire comes packet with the best tools in the Market, all pre-configured and ready to help you get started on your projects faster.">
+            description="Angular on Fire comes packet with the best tools in the Market, all pre-configured to help you get started on your projects faster.">
         <div fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutGap="5%">
             <app-flex-block
                     fxFlex
                     name="angular"
                     image="angular-logo.png"
                     title="Angular 8"
-                    content="All the latest features like web workers, deferential and improved lazy loading, Node 10 support and all the goodies Angular provides."
+                    content="All the latest features, web workers, deferential loading, improved lazy loading, Node 10 support and all the other goodies Angular provides."
             ></app-flex-block>
 
             <app-flex-block
@@ -19,7 +19,7 @@
                     name="rxjs"
                     image="rxjs-logo.png"
                     title="RxJs 6"
-                    content="Take your projects to the next level with RxJs, the power of observables at your fingertips."
+                    content="RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code."
             ></app-flex-block>
         </div>
 

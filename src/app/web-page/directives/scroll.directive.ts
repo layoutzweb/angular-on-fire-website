@@ -5,7 +5,7 @@ import {Subscription} from 'rxjs';
 
 
 @Directive({
-    selector: "[scroll-directive]"
+    selector: '[scroll-directive]'
 })
 export class ScrollDirective implements OnDestroy {
 
@@ -25,7 +25,7 @@ export class ScrollDirective implements OnDestroy {
      * Scroll event listener
      * @param event
      */
-    @HostListener("scroll", ["$event"])
+    @HostListener('scroll', ['$event'])
     onListenerTriggered(event: any): void {
 
         const {scrollTop, scrollLeft, scrollHeight, clientHeight} = event.target;
@@ -34,7 +34,7 @@ export class ScrollDirective implements OnDestroy {
         const percentage = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
 
         // Only update if has changed
-        if(this.service.top() !== scrollTop){
+        if (this.service.top() !== scrollTop) {
 
             // Emit the event
             this.onScroll.emit({
