@@ -74,7 +74,7 @@ jobs:
       - run:
           name: Building application
           command: |
-            npm run build:ssr
+            npm run build:ssr:prod
             cd functions
             npm run build
             cd ../
