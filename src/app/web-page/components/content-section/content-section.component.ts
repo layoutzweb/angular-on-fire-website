@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
             <div class="aof-section-container" fxFlex fxFlex.gt-sm="960px">
                 <h2 *ngIf="title">{{title}}</h2>
                 <p *ngIf="description">{{description}}</p>
-                <div class="aof-section-content">
+                <div class="aof-section-content" fxLayout="column">
                     <ng-content></ng-content>
                 </div>
             </div>

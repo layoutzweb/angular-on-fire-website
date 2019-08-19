@@ -1,3 +1,5 @@
+@import './breakpoints';
+
 ::ng-deep {
   .aof-fire-animation {
     &.aof-fire-large {
@@ -6,11 +8,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         bottom: -240px;
       }
 
-      @media screen and (min-width: 1280px) {
+      @include layout-bp(gt-md) {
         bottom: -300px;
       }
     }
@@ -21,7 +23,7 @@
       bottom: -100px;
       transform: translate(-50%, -50%);
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         bottom: -150px;
       }
     }
@@ -34,12 +36,12 @@
       left: calc(50% - 50px);
       transform: translate(-50%, -50%) rotate(-40deg) ;
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         bottom: -110px;
         left: calc(50% - 50px);
       }
 
-      @media screen and (min-width: 1280px) {
+      @include layout-bp(gt-md) {
         bottom: -130px;
         left: calc(50% - 60px);
       }
@@ -52,12 +54,12 @@
       left: calc(50% + 50px);
       transform: translate(-50%, -50%) rotate(40deg);
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         bottom: -110px;
         left: calc(50% + 50px);
       }
 
-      @media screen and (min-width: 1280px) {
+      @include layout-bp(gt-md) {
         bottom: -130px;
         left: calc(50% + 60px);
       }

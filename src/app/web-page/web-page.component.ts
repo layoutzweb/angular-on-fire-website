@@ -6,6 +6,7 @@ import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
 import {HttpClient} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 
 @Component({
@@ -21,8 +22,8 @@ export class WebPageComponent implements OnInit {
 
     config: any;
     defaults = {
-        title: 'Angular On Fire',
-        description: 'Pre-Configured Angular Project with RxJs, Firebase, Cypress, Jest and Server Side Rendering.',
+        title: '',
+        description: '',
         social: {
             facebook: false,
             twitter: false
@@ -32,12 +33,18 @@ export class WebPageComponent implements OnInit {
     manifestUrl = 'https://cdn.jsdelivr.net/gh/layoutzweb/angular-on-fire@master/package.json';
     docsMarkdown: string;
     version$: Observable<string>;
+    isHandset$: Observable<boolean>;
 
     constructor(private title: Title,
                 private meta: Meta,
                 private http: HttpClient,
+                public layout: BreakpointObserver,
                 private markdownService: MarkdownService) {
         this.config = {...this.defaults, ...(environment.page || {})};
+        this.isHandset$ = this.layout.observe([
+            Breakpoints.Handset,
+            Breakpoints.TabletPortrait
+        ]).pipe(map(result => result.matches));
     }
 
     ngOnInit(): void {

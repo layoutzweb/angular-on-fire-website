@@ -26,8 +26,8 @@ export class ScrollDirective implements OnDestroy {
      */
     @HostListener('scroll', ['$event'])
     onListenerTriggered(event: any): void {
-        const {scrollTop, scrollLeft, scrollHeight, clientHeight} = event.target;
-
+        const {scrollTop, scrollLeft, scrollHeight, clientHeight, clientWidth} = event.target;
+        console.log('event', event);
         // Calculate the scroll percentage
         const percentage = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
 
@@ -37,6 +37,11 @@ export class ScrollDirective implements OnDestroy {
             // Emit the event
             this.scrolled.emit({
                 percentage,
+                client: {
+                    height: clientHeight,
+                    width: clientWidth
+                },
+                height: scrollHeight,
                 top: scrollTop,
                 left: scrollLeft,
                 target: event.target

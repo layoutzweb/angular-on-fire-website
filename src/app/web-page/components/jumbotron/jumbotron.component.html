@@ -9,18 +9,22 @@
         <app-flames size="small" id="small-one" speed="slow"></app-flames>
         <app-flames size="small" id="small-two" speed="normal"></app-flames>
         <app-flames size="small" id="small-center" speed="fast"></app-flames>
-        <img src="assets/angular-logo-large.png" alt="Angular JS Logo" title="Angular On Fire"/>
+        <img [src]="logoPath" [alt]="pageTitle" />
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
-        <h1>On Fire</h1>
-        <p>Pre-Configured Angular Project with RxJs, Firebase, Cypress, Jest and Server Side Rendering.</p>
+        <h1>{{heading}}</h1>
+        <p>{{description}}</p>
 
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-            <a class="aof-main-action" href="#documentation" title="Angular On Fire Documentation">
-                <strong>Documentation</strong>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutGap="20px">
+            <a class="aof-main-action" [ngClass]="{'aof-icon-action': (isHandset$ | async)}" href="#documentation" title="{{pageTitle}} Documentation">
+                <strong *ngIf="(isHandset$ | async) === false">Documentation</strong>
+                <fa-icon *ngIf="isHandset$ | async" [icon]="['fab', 'github-alt']"></fa-icon>
             </a>
-            <a class="aof-main-action" href="https://github.com/layoutzweb/angular-on-fire" title="See Angular On Fire on Github" target="_blank">
-                View it on <strong>Github</strong>
+            <a class="aof-main-action" [ngClass]="{'aof-icon-action': (isHandset$ | async)}" href="https://github.com/layoutzweb/angular-on-fire" title="{{pageTitle}} on Github" target="_blank">
+                <ng-container *ngIf="(isHandset$ | async) === false">View it on <strong>Github</strong></ng-container>
+                <fa-icon *ngIf="isHandset$ | async" [icon]="['fas', 'code']"></fa-icon>
             </a>
         </div>
         <div class="aof-jumbotron-version">
@@ -28,3 +32,4 @@
         </div>
     </div>
 </section>
+

@@ -1,3 +1,5 @@
+@import '../../partials/breakpoints';
+
 .aof-flex-box {
   padding: 60px 0;
 
@@ -10,7 +12,7 @@
     & > img {
       max-height: 100%;
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         max-height: 70%;
       }
     }
@@ -22,7 +24,7 @@
     p, h3 {
       text-align: center;
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         text-align: left;
       }
     }
@@ -30,7 +32,7 @@
     p {
       font-size: 16px;
 
-      @media screen and (min-width: 600px) {
+      @include layout-bp(gt-xs) {
         text-align: justify;
       }
     }
