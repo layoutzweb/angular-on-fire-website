@@ -5,29 +5,27 @@ import {Subscription} from 'rxjs';
 
 
 @Directive({
-    selector: '[scroll-directive]'
+    selector: '[appScrollDirective]'
 })
 export class ScrollDirective implements OnDestroy {
 
     /**
      * Scroll event emitter
      */
-    @Output() onScroll = new EventEmitter<AofScrollEvent>();
+    @Output() scrolled = new EventEmitter<AofScrollEvent>();
 
     private listener: Subscription;
 
     constructor(private service: ScrollService) {
-        this.listener = this.onScroll
+        this.listener = this.scrolled
             .subscribe((e: AofScrollEvent) => this.service.update(e));
     }
 
     /**
      * Scroll event listener
-     * @param event
      */
     @HostListener('scroll', ['$event'])
     onListenerTriggered(event: any): void {
-
         const {scrollTop, scrollLeft, scrollHeight, clientHeight} = event.target;
 
         // Calculate the scroll percentage
@@ -37,7 +35,7 @@ export class ScrollDirective implements OnDestroy {
         if (this.service.top() !== scrollTop) {
 
             // Emit the event
-            this.onScroll.emit({
+            this.scrolled.emit({
                 percentage,
                 top: scrollTop,
                 left: scrollLeft,
