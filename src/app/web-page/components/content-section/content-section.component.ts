@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 
 
 @Component({
@@ -8,13 +8,15 @@ import {Component, Input} from '@angular/core';
             <div class="aof-section-container" fxFlex fxFlex.gt-sm="960px">
                 <h2 *ngIf="title">{{title}}</h2>
                 <p *ngIf="description">{{description}}</p>
-                <div class="aof-section-content">
+                <div class="aof-section-content" fxLayout="column">
                     <ng-content></ng-content>
                 </div>
             </div>
         </section>
     `,
-    styleUrls: ['./content-section.component.scss']
+    styleUrls: ['./content-section.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class ContentSectionComponent {
 

@@ -7,7 +7,7 @@ import {ScrollService} from '../../services/scroll.service';
 @Component({
     selector: 'app-scroll-top',
     template: `
-        <div class="aof-scroll-top" *ngIf="on$ | async">
+        <div class="aof-scroll-top" [ngClass]="{'aof-at-bottom': (bottom$ | async)}" *ngIf="on$ | async">
             <a href="#top" (click)="scrollTo($event)">
                 <fa-icon [icon]="['fas', 'angle-up']" size="2x"></fa-icon>
             </a>
@@ -20,9 +20,17 @@ export class ScrollTopComponent {
     @Input() target: ElementRef;
 
     on$: Observable<boolean>;
+    bottom$: Observable<boolean>;
 
     constructor(private scroll: ScrollService) {
-        this.on$ = this.scroll.position$.pipe(map((e) => e.top > 300));
+        this.on$ = this.scroll.position$.pipe(map((e) => {
+            // console.log('scroll', e.height, e.top, e.height - e.top);
+            return e.top > 300;
+        }));
+
+        this.bottom$ = this.scroll.position$.pipe(map((e) => {
+            return (e.height - (e.top + e.client.height)) < 180;
+        }));
     }
 
     scrollTo(event: MouseEvent): void {

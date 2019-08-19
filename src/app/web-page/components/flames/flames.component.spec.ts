@@ -18,8 +18,6 @@ describe('Flames', () => {
             declarations: [
                 FlamesComponent
             ],
-        }).overrideComponent(FlamesComponent, {
-            set: { changeDetection: ChangeDetectionStrategy.Default },
         });
 
         fixture = TestBed.createComponent(FlamesComponent);

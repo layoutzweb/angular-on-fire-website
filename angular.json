@@ -34,7 +34,6 @@
               "node_modules/prismjs/plugins/toolbar/prism-toolbar.css"
             ],
             "scripts": [
-              "node_modules/prismjs/prism.js",
               "node_modules/clipboard/dist/clipboard.js",
               "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/plugins/toolbar/prism-toolbar.js",

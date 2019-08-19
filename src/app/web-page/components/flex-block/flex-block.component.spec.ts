@@ -18,8 +18,6 @@ describe('FlexBox', () => {
             declarations: [
                 FlexBlockComponent
             ],
-        }).overrideComponent(FlexBlockComponent, {
-            set: { changeDetection: ChangeDetectionStrategy.Default },
         });
 
         fixture = TestBed.createComponent(FlexBlockComponent);

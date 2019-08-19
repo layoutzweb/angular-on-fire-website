@@ -1,4 +1,5 @@
 @import '../../partials/colors';
+@import '../../partials/breakpoints';
 
 .aof-footer {
   display: flex;
@@ -23,7 +24,19 @@
   }
 }
 
+.aof-creator {
+  margin-bottom: 20px;
+
+  @include layout-bp(gt-sm) {
+    margin-bottom: 0;
+  }
+}
+
 .aof-footer-menu {
+  ul {
+    padding-left: 0;
+  }
+
   li {
     display: inline-block;
     margin-right: 20px;

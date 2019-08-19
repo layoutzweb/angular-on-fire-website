@@ -1,22 +1,23 @@
 import {TestBed, ComponentFixture} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserModule} from '@angular/platform-browser';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlamesComponent} from '../flames/flames.component';
 import {JumbotronComponent } from './jumbotron.component';
-import {BrowserModule} from '@angular/platform-browser';
 
 
 describe('Jumbotron', () => {
 
   let fixture: ComponentFixture<JumbotronComponent>;
   let instance: JumbotronComponent;
+  let compiled: any;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserModule,
-        CommonModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        FontAwesomeModule
       ],
       declarations: [
         FlamesComponent,
@@ -26,6 +27,7 @@ describe('Jumbotron', () => {
 
     fixture = TestBed.createComponent(JumbotronComponent);
     instance = fixture.debugElement.componentInstance;
+    compiled = fixture.debugElement.nativeElement;
   }));
 
   it('should create a Jumbotron', () => {
@@ -33,22 +35,27 @@ describe('Jumbotron', () => {
   });
 
   it('should contain the Angular Logo', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.aof-angular-logo img').src).toContain('assets/angular-logo-large.png');
+    const logoPath = 'assets/angular-logo-large.png';
+    instance.logoPath = logoPath;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.aof-angular-logo img').src).toContain(logoPath);
   });
 
   it('should have a title', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.aof-jumbotron > div h1').textContent).toBeTruthy();
+    const title = 'My Title';
+    instance.heading = title;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.aof-jumbotron > div h1').textContent).toEqual(title);
   });
 
   it('should have a description', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.aof-jumbotron > div p').textContent).toBeTruthy();
+    const description = 'My Description';
+    instance.description = description;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.aof-jumbotron > div p').textContent).toEqual(description);
   });
 
   it('should have a main action wth correct url', () => {
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelectorAll('.aof-main-action').length)
         .toEqual(2);
     expect(compiled.querySelector(

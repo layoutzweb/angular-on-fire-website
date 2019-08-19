@@ -1,14 +1,23 @@
+@import '../../partials/breakpoints';
+
 .aof-section {
   padding: 80px 0;
 
   .aof-section-container {
+    max-width: 100%;
+    padding: 0 20px;
+
+    @include layout-bp(gt-sm) {
+      padding: 0;
+    }
+
     & > h2 {
       font-size: 32px;
       line-height: 42px;
       text-align: center;
       margin-bottom: 20px;
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         font-size: 62px;
         line-height: 62px;
       }
@@ -19,7 +28,7 @@
       line-height: 24px;
       text-align: center;
 
-      @media screen and (min-width: 960px) {
+      @include layout-bp(gt-sm) {
         font-size: 22px;
         line-height: 28px;
       }

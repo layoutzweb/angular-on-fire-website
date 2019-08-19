@@ -19,12 +19,11 @@ h3, h4, h5, h6 { color: $headingColor; }
 
 @import './partials/flames';
 @import './partials/list';
-@import './partials/docs';
+@import './partials/docs.scss';
 @import './partials/tech';
 @import './partials/contributions';
 
 .aof-demo-container {
   height: 500px;
 }
-
 

@@ -8,6 +8,7 @@ describe('ContentSection', () => {
   const componentName = 'my-section';
   let fixture: ComponentFixture<ContentSectionComponent>;
   let instance: ContentSectionComponent;
+  let compiled: any;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
@@ -22,12 +23,12 @@ describe('ContentSection', () => {
 
     fixture = TestBed.createComponent(ContentSectionComponent);
     instance = fixture.debugElement.componentInstance;
+    compiled = fixture.debugElement.nativeElement;
   }));
 
   it('should create a content-section', () => {
     instance.name = componentName;
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(fixture).toBeTruthy();
     expect(compiled.querySelector('.aof-my-section-section')).toBeTruthy();
   });
@@ -36,7 +37,6 @@ describe('ContentSection', () => {
     instance.name = componentName;
     instance.title = 'My Section Title';
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h2').textContent).toContain(instance.title);
   });
 
@@ -44,7 +44,6 @@ describe('ContentSection', () => {
     instance.name = 'my-section';
     instance.description = 'My Section Description';
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p').textContent).toContain(instance.description);
   });
 });

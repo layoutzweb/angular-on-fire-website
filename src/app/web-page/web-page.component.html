@@ -1,5 +1,10 @@
 <div class="aof-page" appScrollDirective>
-    <app-jumbotron name="page-top" [version]="version$ | async" #jumbotronRef></app-jumbotron>
+    <app-jumbotron name="page-top"
+                   [version]="version$ | async"
+                   heading="On Fire"
+                   description="Pre-Configured Angular Project with RxJs, Firebase, Cypress, Jest and Server Side Rendering."
+                   logoPath="assets/angular-logo-large.png"
+                   #jumbotronRef></app-jumbotron>
 
     <app-content-section
             name="tech"
@@ -65,9 +70,8 @@
             name="documentation"
             title="Getting Started"
             description="Get your Angular project up and running in just a few minutes">
-        <div class="aof-docs-container" fxLayout="row" fxLayoutGap="60px">
-            <div fxFlex="180px">
-
+        <div class="aof-docs-container" fxFlex fxLayout="row" fxLayoutGap.gt-sm="60px">
+            <div fxHide fxFlex.gt-sm="180px" fxShow.gt-sm="true">
                 <div class="aof-docs-context-menu">
                     <h3>Topics</h3>
                     <ul>
@@ -80,8 +84,8 @@
                     </ul>
                 </div>
             </div>
-            <div fxFlex>
-                <markdown [data]="docsMarkdown" lineNumbers></markdown>
+            <div fxFlex="100%" fxFlex.gt-sm="auto" fxLayout="column">
+                <markdown [data]="docsMarkdown"></markdown>
             </div>
         </div>
     </app-content-section>

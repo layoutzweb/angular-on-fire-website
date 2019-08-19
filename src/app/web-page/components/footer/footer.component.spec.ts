@@ -1,6 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ChangeDetectionStrategy} from '@angular/core';
 import {FooterComponent} from './footer.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
@@ -20,8 +19,6 @@ describe('FlexBox', () => {
             declarations: [
                 FooterComponent
             ],
-        }).overrideComponent(FooterComponent, {
-            set: {changeDetection: ChangeDetectionStrategy.Default},
         });
 
         fixture = TestBed.createComponent(FooterComponent);
