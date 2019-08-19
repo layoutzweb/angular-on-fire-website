@@ -34,11 +34,11 @@ describe('FlexBox', () => {
     });
 
     it('should display content in 100% in mobile', () => {
-        expect(compiled.querySelector('.aof-footer-container').getAttribute('fxFlex')).toEqual('');
+        expect(compiled.querySelector('.aof-footer > div:first-child').getAttribute('fxFlex')).toEqual('');
     });
 
     it('should restrain content to correct width on web', () => {
-        expect(compiled.querySelector('.aof-footer-container').getAttribute('fxFlex.gt-sm')).toEqual('960px');
+        expect(compiled.querySelector('.aof-footer > div:first-child').getAttribute('fxFlex.gt-sm')).toEqual('960px');
     });
 
     it('should center content', () => {
