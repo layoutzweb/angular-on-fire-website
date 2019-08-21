@@ -3,7 +3,7 @@
 
 context('Actions', () => {
     beforeEach(() => {
-        cy.visit(Cypress.config('baseUrl') || '')
+        cy.visit(Cypress.config('baseUrl') || '');
     });
 
 

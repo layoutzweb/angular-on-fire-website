@@ -36,6 +36,7 @@
             "scripts": [
               "node_modules/clipboard/dist/clipboard.js",
               "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
               "node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
               "node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js",
               "node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
@@ -120,10 +121,15 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "functions/tsconfig.json"
+              "tsconfig.server.json",
+              "functions/tsconfig.json",
+              "cypress/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
+            ],
+            "files": [
+
             ]
           }
         },
