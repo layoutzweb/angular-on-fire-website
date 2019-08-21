@@ -1,44 +1,40 @@
 @import '../partials/colors';
 
-::ng-deep {
-  .aof-documentation-section {
-    background-color: #e8e8e8;
+markdown {
+  code {
+    background-color: rgba(27,31,35,.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: .2em .4em;
+  }
 
-    code {
-      background-color: rgba(27,31,35,.05);
-      border-radius: 3px;
-      font-size: 85%;
-      margin: 0;
-      padding: .2em .4em;
-    }
+  h2 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 50px;
+    color: $primaryColor;
+  }
 
-    h2 {
-      font-size: 36px;
-      line-height: 44px;
-      margin-top: 50px;
-      color: $primaryColor;
-    }
+  h3 {
+    font-size: 22px;
+    margin-top: 40px;
+  }
 
-    h3 {
-      font-size: 22px;
-      margin-top: 40px;
-    }
+  h4 {
+    font-size: 18px;
+    margin-top: 30px;
+  }
 
-    h4 {
-      font-size: 18px;
-      margin-top: 30px;
-    }
+  h3, h4 {
+    opacity: .8;
+    margin-bottom: 10px;
+  }
 
-    h3, h4 {
-      opacity: .8;
-      margin-bottom: 10px;
-    }
-
-    h2, h3, h4 {
-      & > a {
-        text-decoration: none;
-        color: inherit;
-      }
+  h2, h3, h4 {
+    & > a {
+      text-decoration: none;
+      color: inherit;
     }
   }
 }
@@ -52,7 +48,7 @@
   top: 0;
   padding-top: 30px;
 
-  h3 {
+  & > h3 {
     margin: 0 0 15px 0;
   }
 
@@ -73,5 +69,11 @@
         }
       }
     }
+  }
+}
+
+::ng-deep {
+  .aof-documentation-section {
+    background-color: #e8e8e8;
   }
 }

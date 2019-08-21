@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input} from '@angular/core'
 
 @Component({
     selector: 'app-code-block',
@@ -7,13 +7,8 @@ import {Component, Input} from '@angular/core';
             <ng-content></ng-content>
         </code></pre>
     `,
-    styles: [
-        'code, pre { white-space: pre; }',
-        'pre { margin-bottom: 20px; }'
-    ]
+    styles: ['code, pre { white-space: pre; }', 'pre { margin-bottom: 20px; }'],
 })
 export class CodeBlockComponent {
-
-    @Input() language: string;
+    @Input() language: string
 }
-
