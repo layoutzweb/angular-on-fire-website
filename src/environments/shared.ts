@@ -1,5 +1,3 @@
-
-
 export const defaults = {
     production: false,
     emulator: false,
@@ -7,14 +5,17 @@ export const defaults = {
     basePath: '/',
     page: {
         title: 'Angular On Fire',
-        description: 'Pre-Configured Angular Project with RxJs, Firebase, Cypress, Jest and Server Side Rendering.',
+        description:
+            'Pre-Configured Angular Project with RxJs, Firebase, ' +
+            'Cypress, Jest and Server Side Rendering.',
         social: {
             facebook: true,
-            twitter: true
-        }
+            twitter: true,
+        },
+        githubCdnUrl:
+            'https://cdn.jsdelivr.net/gh/layoutzweb/angular-on-fire@master',
     },
     firebase: {
-        region: 'us-central1'
-    }
-};
-
+        region: 'us-central1',
+    },
+}
