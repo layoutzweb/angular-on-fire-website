@@ -183,6 +183,9 @@ workflows:
               ignore: /.*/
             tags:
               only: /.*/
+      - lint:
+          requires:
+            - preload
       - build:
           requires:
             - lint
