@@ -65,6 +65,19 @@ jobs:
             npm run lint
             cd ../
 
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_main_dependencies
+      - restore_cache: *restore_functions_dependencies
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Test Application
+          command: npm run test
+
   build:
     <<: *defaults
     steps:
@@ -86,20 +99,7 @@ jobs:
             - functions/lib
             - functions/dist
 
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache: *restore_main_dependencies
-      - restore_cache: *restore_functions_dependencies
-      - attach_workspace:
-          at: .
-
-      - run:
-          name: Test Application
-          command: npm run test
-
-  deploy:
+  deploy_staging:
     <<: *defaults
     steps:
       - checkout
@@ -109,16 +109,37 @@ jobs:
           at: .
 
       - deploy:
-          name: Deploying to Firebase
+          name: Deploying to Firebase Staging
           command: |
-            ./node_modules/.bin/firebase use $FIREBASE_DEFAULT_PROJECT_ID --alias default --token "$FIREBASE_CI_TOKEN"
+            ./node_modules/.bin/firebase use $FIREBASE_STAGING_PROJECT_ID --alias staging --token "$FIREBASE_CI_TOKEN"
             ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
 
+  deploy_prod:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_main_dependencies
+      - restore_cache: *restore_functions_dependencies
+      - attach_workspace:
+          at: .
+
+      - deploy:
+          name: Deploying to Firebase Production
+          command: |
+            ./node_modules/.bin/firebase use $FIREBASE_PROD_PROJECT_ID --alias production --token "$FIREBASE_CI_TOKEN"
+            ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
+
+# Tests & deploy everything merged to master to staging
 workflows:
   version: 2
   test:
     jobs:
-      - preload
+      - preload:
+          filters:
+            branches:
+              ignore: master
+            tags:
+              ignore: /.*/
       - lint:
           requires:
             - preload
@@ -128,12 +149,35 @@ workflows:
       - test:
           requires:
             - build
-  deploy:
+
+  deploy_staging:
     jobs:
       - preload:
           filters:
             branches:
               only: master
+            tags:
+              ignore: /.*/
+      - lint:
+          requires:
+            - preload
+      - build:
+          requires:
+            - lint
+      - test:
+          requires:
+            - build
+      - deploy_staging:
+          requires:
+            - test
+
+  # Only deploy tags to production
+  deploy_prod:
+    jobs:
+      - preload:
+          filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /.*/
       - lint:
@@ -145,7 +189,7 @@ workflows:
       - test:
           requires:
             - build
-      - deploy:
+      - deploy_prod:
           requires:
             - test
 
