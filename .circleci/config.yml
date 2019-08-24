@@ -149,9 +149,6 @@ workflows:
       - test:
           requires:
             - build
-      - deploy_staging:
-          requires:
-            - test
 
   deploy_staging:
     jobs:
