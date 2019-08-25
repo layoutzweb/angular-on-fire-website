@@ -1,4 +1,3 @@
-
 restore_main_dependencies: &restore_main_dependencies
   name: Restoring app Dependencies from cache
   keys:
@@ -110,9 +109,7 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Staging
-          command: |
-            ./node_modules/.bin/firebase use $FIREBASE_STAGING_PROJECT_ID --alias staging --token "$FIREBASE_CI_TOKEN"
-            ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
 
   deploy_prod:
     <<: *defaults
@@ -125,19 +122,20 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Production
-          command: |
-            ./node_modules/.bin/firebase use $FIREBASE_PROD_PROJECT_ID --alias production --token "$FIREBASE_CI_TOKEN"
-            ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
 
-# Tests & deploy everything merged to master to staging
 workflows:
   version: 2
+
+  # This will run for every branch other than master and next
   test:
     jobs:
       - preload:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - next
             tags:
               ignore: /.*/
       - lint:
@@ -150,12 +148,13 @@ workflows:
           requires:
             - build
 
+  # Deploy every merge to next without a tag to staging
   deploy_staging:
     jobs:
       - preload:
           filters:
             branches:
-              only: master
+              only: next
             tags:
               ignore: /.*/
       - lint:
@@ -171,7 +170,7 @@ workflows:
           requires:
             - test
 
-  # Only deploy tags to production
+  # Deploy tags to productions, only tag in master
   deploy_prod:
     jobs:
       - preload:
