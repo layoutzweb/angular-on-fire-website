@@ -125,28 +125,30 @@ jobs:
           name: Deploying to Firebase Production
           command: ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
 
-# Tests every branch besides master and next
 workflows:
   version: 2
-  test:
-    jobs:
-      - preload:
-          filters:
-            branches:
-              ignore:
-                - master
-                - next
-            tags:
-              ignore: /.*/
-      - lint:
-          requires:
-            - preload
-      - build:
-          requires:
-            - lint
-      - test:
-          requires:
-            - build
+
+  # Enable this if you want your builds to run for every commit/merge on every branch other than master and next
+  # This does overload your Circle CI if there are many developers, creating and pushing code to many different branches
+  #   test:
+  #     jobs:
+  #       - preload:
+  #           filters:
+  #             branches:
+  #               ignore:
+  #                 - master
+  #                 - next
+  #             tags:
+  #               ignore: /.*/
+  #       - lint:
+  #           requires:
+  #             - preload
+  #       - build:
+  #           requires:
+  #             - lint
+  #       - test:
+  #           requires:
+  #             - build
 
   # Deploy every merge to next without a tag to staging
   deploy_staging:
