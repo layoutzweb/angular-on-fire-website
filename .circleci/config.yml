@@ -182,13 +182,33 @@ workflows:
       - lint:
           requires:
             - preload
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - build:
           requires:
             - lint
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - test:
           requires:
             - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - deploy_prod:
           requires:
             - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
 
