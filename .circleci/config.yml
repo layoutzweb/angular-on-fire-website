@@ -129,7 +129,7 @@ jobs:
             ./node_modules/.bin/firebase use $FIREBASE_PROD_PROJECT_ID --alias production --token "$FIREBASE_CI_TOKEN"
             ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
 
-# Tests & deploy everything merged to master to staging
+# Tests every branch besides master and next
 workflows:
   version: 2
   test:
@@ -137,7 +137,9 @@ workflows:
       - preload:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - next
             tags:
               ignore: /.*/
       - lint:
@@ -150,12 +152,13 @@ workflows:
           requires:
             - build
 
+  # Deploy every merge to next without a tag to staging
   deploy_staging:
     jobs:
       - preload:
           filters:
             branches:
-              only: master
+              only: next
             tags:
               ignore: /.*/
       - lint:
@@ -171,7 +174,7 @@ workflows:
           requires:
             - test
 
-  # Only deploy tags to production
+  # Deploy tags to productions, only tag in master
   deploy_prod:
     jobs:
       - preload:
