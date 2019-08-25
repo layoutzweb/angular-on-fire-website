@@ -110,9 +110,7 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Staging
-          command: |
-            ./node_modules/.bin/firebase use $FIREBASE_STAGING_PROJECT_ID --alias staging --token "$FIREBASE_CI_TOKEN"
-            ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
 
   deploy_prod:
     <<: *defaults
@@ -125,9 +123,7 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Production
-          command: |
-            ./node_modules/.bin/firebase use $FIREBASE_PROD_PROJECT_ID --alias production --token "$FIREBASE_CI_TOKEN"
-            ./node_modules/.bin/firebase deploy --only functions:ssrServer,hosting --token "$FIREBASE_CI_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
 
 # Tests every branch besides master and next
 workflows:
