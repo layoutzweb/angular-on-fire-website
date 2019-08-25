@@ -1,4 +1,3 @@
-
 restore_main_dependencies: &restore_main_dependencies
   name: Restoring app Dependencies from cache
   keys:
@@ -128,27 +127,26 @@ jobs:
 workflows:
   version: 2
 
-  # Enable this if you want your builds to run for every commit/merge on every branch other than master and next
-  # This does overload your Circle CI if there are many developers, creating and pushing code to many different branches
-  #   test:
-  #     jobs:
-  #       - preload:
-  #           filters:
-  #             branches:
-  #               ignore:
-  #                 - master
-  #                 - next
-  #             tags:
-  #               ignore: /.*/
-  #       - lint:
-  #           requires:
-  #             - preload
-  #       - build:
-  #           requires:
-  #             - lint
-  #       - test:
-  #           requires:
-  #             - build
+  # This will run for every branch other than master and next
+  test:
+    jobs:
+      - preload:
+          filters:
+            branches:
+              ignore:
+                - master
+                - next
+            tags:
+              ignore: /.*/
+      - lint:
+          requires:
+            - preload
+      - build:
+          requires:
+            - lint
+      - test:
+          requires:
+            - build
 
   # Deploy every merge to next without a tag to staging
   deploy_staging:
