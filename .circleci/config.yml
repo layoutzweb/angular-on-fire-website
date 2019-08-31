@@ -109,7 +109,12 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Staging
-          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+          command: |
+            if [[ ! -z "$FIREBASE_STAGING_PROJECT_ID" && ! -z "$FIREBASE_CI_TOKEN" ]]; then
+              ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+            else
+              echo "Skipping production deploy, missing Firebase environmental variables."
+            fi
 
   deploy_prod:
     <<: *defaults
@@ -122,7 +127,12 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Production
-          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+          command: |
+            if [[ ! -z "$FIREBASE_PROD_PROJECT_ID" && ! -z "$FIREBASE_CI_TOKEN" ]]; then
+              ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+            else
+              echo "Skipping production deploy, missing Firebase environmental variables."
+            fi
 
 workflows:
   version: 2
