@@ -77,7 +77,7 @@ jobs:
           name: Test Application
           command: npm run test
 
-  build:
+  build_prod:
     <<: *defaults
     steps:
       - checkout
@@ -87,6 +87,27 @@ jobs:
           name: Building application
           command: |
             npm run build:ssr:prod
+            cd functions
+            npm run build
+            cd ../
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - functions/lib
+            - functions/dist
+
+  build_staging:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_main_dependencies
+      - restore_cache: *restore_functions_dependencies
+      - run:
+          name: Building application
+          command: |
+            npm run build:ssr:staging
             cd functions
             npm run build
             cd ../
@@ -109,7 +130,12 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Staging
-          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+          command: |
+            if [[ ! -z "$FIREBASE_STAGING_PROJECT_ID" && ! -z "$FIREBASE_CI_TOKEN" ]]; then
+              ./node_modules/.bin/firebase deploy --project $FIREBASE_STAGING_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+            else
+              echo "Skipping production deploy, missing Firebase environmental variables."
+            fi
 
   deploy_prod:
     <<: *defaults
@@ -122,7 +148,12 @@ jobs:
 
       - deploy:
           name: Deploying to Firebase Production
-          command: ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+          command: |
+            if [[ ! -z "$FIREBASE_PROD_PROJECT_ID" && ! -z "$FIREBASE_CI_TOKEN" ]]; then
+              ./node_modules/.bin/firebase deploy --project $FIREBASE_PROD_PROJECT_ID --token "$FIREBASE_CI_TOKEN"
+            else
+              echo "Skipping production deploy, missing Firebase environmental variables."
+            fi
 
 workflows:
   version: 2
@@ -141,12 +172,12 @@ workflows:
       - lint:
           requires:
             - preload
-      - build:
+      - build_prod:
           requires:
             - lint
       - test:
           requires:
-            - build
+            - build_prod
 
   # Deploy every merge to next without a tag to staging
   deploy_staging:
@@ -160,12 +191,12 @@ workflows:
       - lint:
           requires:
             - preload
-      - build:
+      - build_staging:
           requires:
             - lint
       - test:
           requires:
-            - build
+            - build_staging
       - deploy_staging:
           requires:
             - test
@@ -182,13 +213,33 @@ workflows:
       - lint:
           requires:
             - preload
-      - build:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
+      - build_prod:
           requires:
             - lint
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - test:
           requires:
-            - build
+            - build_prod
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - deploy_prod:
           requires:
             - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
 

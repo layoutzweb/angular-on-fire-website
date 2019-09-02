@@ -14,24 +14,28 @@ import {FlexBlockComponent} from './components/flex-block/flex-block.component'
 import {FooterComponent} from './components/footer/footer.component'
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component'
 import {CodeBlockComponent} from './components/code-block.component'
+import {ContextMenuComponent} from './components/context-menu/context-menu.component'
 import {WebPageComponent} from './web-page.component'
-import {PageNotFoundComponent} from './page/not-found/not-found.component'
+import {DocumentationComponent} from './components/documentation/documentation.component'
 import {ScrollDirective} from './directives/scroll.directive'
+import {ContextMenuActiveDirective} from './components/context-menu/context-menu-active.directive'
 import {ScrollTopComponent} from './components/scroll-top/scroll-top.component'
 import {ScrollService} from './services/scroll.service'
 
 @NgModule({
     declarations: [
         WebPageComponent,
-        PageNotFoundComponent,
         ContentSectionComponent,
         FlamesComponent,
         FlexBlockComponent,
         FooterComponent,
         JumbotronComponent,
         CodeBlockComponent,
+        ContextMenuComponent,
+        DocumentationComponent,
         ScrollTopComponent,
         ScrollDirective,
+        ContextMenuActiveDirective,
     ],
     imports: [
         CommonModule,
@@ -42,7 +46,7 @@ import {ScrollService} from './services/scroll.service'
         InlineSVGModule.forRoot(),
     ],
     providers: [ScrollService],
-    exports: [WebPageComponent, PageNotFoundComponent],
+    exports: [WebPageComponent],
 })
 export class WebPageModule {
     constructor() {

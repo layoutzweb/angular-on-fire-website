@@ -1,15 +1,24 @@
 import {NgModule} from '@angular/core'
 import {Routes, RouterModule} from '@angular/router'
 import {WebPageComponent} from './web-page/web-page.component'
-import {PageNotFoundComponent} from './web-page/page/not-found/not-found.component'
+import {PageNotFoundComponent} from './not-found/not-found.component'
 
 const routes: Routes = [
     {
         path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+    },
+    {
+        path: 'home',
         component: WebPageComponent,
     },
     {
-        path: '*',
+        path: 'not-found',
+        component: PageNotFoundComponent,
+    },
+    {
+        path: '**',
         component: PageNotFoundComponent,
     },
 ]

@@ -1,13 +1,16 @@
 export const defaults = {
     production: false,
     emulator: false,
-    baseUrl: 'localhost:5000',
+    baseUrl: 'localhost:4200',
     basePath: '/',
     page: {
-        title: 'Angular On Fire',
+        name: 'Angular On Fire',
+        title:
+            'Angular On Fire: Angular Universal Development Environment ' +
+            'Powered By Firebase',
         description:
-            'Pre-Configured Angular Project with RxJs, Firebase, ' +
-            'Cypress, Jest and Server Side Rendering.',
+            'Pre-Configured Angular Universal (SSR) Project with Firebase ' +
+            'Hosting, RxJs, Cypress, Jest and Circle CI workflow.',
         social: {
             facebook: true,
             twitter: true,

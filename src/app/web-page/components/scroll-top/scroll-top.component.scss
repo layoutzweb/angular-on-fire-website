@@ -1,24 +1,14 @@
-@import '../../partials/colors';
-@import '../../partials/breakpoints';
+@import '../../../partials/colors';
+@import '../../../partials/breakpoints';
 
 .aof-scroll-top {
-  position: fixed;
-  right: 20px;
-  bottom: 0;
-  font-size: 38px;
-  font-weight: 900;
+    position: fixed;
+    right: 40px;
+    bottom: 0;
+    font-size: 38px;
+    font-weight: 900;
 
-
-  &.aof-at-bottom {
-    bottom: 210px;
-
-    @include layout-bp(gt-sm) {
-      bottom: 160px;
+    a {
+        color: black;
     }
-  }
-
-  a {
-    color: $primaryColor;
-  }
 }
-

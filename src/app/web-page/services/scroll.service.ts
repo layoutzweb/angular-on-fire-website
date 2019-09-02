@@ -37,15 +37,19 @@ export class ScrollService {
         this.current.next(event)
     }
 
-    top() {
+    host(): Element {
+        return this.current.getValue().target
+    }
+
+    top(): number {
         return this.current.getValue().top
     }
 
-    left() {
+    left(): number {
         return this.current.getValue().left
     }
 
-    percentage() {
+    percentage(): number {
         return this.current.getValue().percentage
     }
 

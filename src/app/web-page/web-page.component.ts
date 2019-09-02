@@ -1,12 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {Meta, Title} from '@angular/platform-browser'
 import {MarkdownService} from 'ngx-markdown'
 import {environment} from '../../environments/environment'
-import {JumbotronComponent} from './components/jumbotron/jumbotron.component'
 import {HttpClient} from '@angular/common/http'
 import {catchError, map} from 'rxjs/operators'
-import {Observable} from 'rxjs'
+import {BehaviorSubject, Observable} from 'rxjs'
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
+import {ContextMenuAction} from './components/context-menu/context-menu.component'
 
 @Component({
     selector: 'app-web-page',
@@ -15,11 +15,6 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
     preserveWhitespaces: true,
 })
 export class WebPageComponent implements OnInit {
-    @ViewChild('jumbotronRef', {static: true})
-    jumbotronRef: JumbotronComponent
-    @ViewChild('documentation', {static: true})
-    documentationRef: JumbotronComponent
-
     config: any
     defaults = {
         title: '',
@@ -34,6 +29,10 @@ export class WebPageComponent implements OnInit {
     docsMarkdown: string
     version$: Observable<string>
     isHandset$: Observable<boolean>
+    active: string
+
+    contextMenu = new BehaviorSubject<ContextMenuAction[]>([])
+    contextMenu$ = this.contextMenu.asObservable()
 
     constructor(
         private title: Title,
@@ -49,9 +48,19 @@ export class WebPageComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        const {social} = this.config
         this.seo()
         this.docs()
-        this.version()
+
+        if (social) {
+            if (social.twitter) {
+                this.addTwitterTags()
+            }
+            if (social.facebook) {
+                this.addFacebookTags()
+            }
+        }
+
         this.version$ = this.version()
     }
 
@@ -76,58 +85,68 @@ export class WebPageComponent implements OnInit {
                     const split = response.split(
                         '## [Getting Started](#getting-started)'
                     )
+
                     this.docsMarkdown = split[1]
                 }
             })
     }
 
     seo(): void {
-        const {title, description, url, social} = this.config
+        const {title, description} = this.config
 
         // Site metadata
         this.title.setTitle(title)
         this.meta.addTag({name: 'description', content: description})
+    }
 
-        if (social) {
-            if (social.twitter) {
-                // Twitter metadata
-                this.meta.addTag({name: 'twitter:card', content: 'summary'})
-                this.meta.addTag({
-                    name: 'twitter:site',
-                    content: '@AngularUniv',
-                })
-                this.meta.addTag({
-                    name: 'twitter:title',
-                    content: this.title.getTitle(),
-                })
-                this.meta.addTag({
-                    name: 'twitter:description',
-                    content: description,
-                })
-                this.meta.addTag({
-                    name: 'twitter:text:description',
-                    content: description,
-                })
-                // this.meta.addTag({name: 'twitter:image',
-                // content: 'https://avatars3.githubusercontent.com/u/
-                // 16628445?v=3&s=200'
-                // });
-            }
+    addTwitterTags() {
+        const {description} = this.config
 
-            if (social.facebook) {
-                // Facebook metadata
-                this.meta.addTag({name: 'og:url', content: url})
-                this.meta.addTag({name: 'og:type', content: 'website'})
-                this.meta.addTag({
-                    name: 'og:title',
-                    content: this.title.getTitle(),
-                })
-                this.meta.addTag({
-                    name: 'og:description',
-                    content: this.config.description,
-                })
-                // this.meta.addTag({name: 'og:image', content: description});
-            }
-        }
+        this.meta.addTag({name: 'twitter:card', content: 'summary'})
+        this.meta.addTag({
+            name: 'twitter:site',
+            content: '@AngularUniv',
+        })
+        this.meta.addTag({
+            name: 'twitter:title',
+            content: this.title.getTitle(),
+        })
+        this.meta.addTag({
+            name: 'twitter:description',
+            content: description,
+        })
+        this.meta.addTag({
+            name: 'twitter:text:description',
+            content: description,
+        })
+        // this.meta.addTag({name: 'twitter:image',
+        // content: 'https://avatars3.githubusercontent.com/u/
+        // 16628445?v=3&s=200'
+        // });
+    }
+
+    addFacebookTags() {
+        const {baseUrl} = environment
+        const {title, description} = this.config
+
+        this.meta.addTag({name: 'og:url', content: baseUrl})
+        this.meta.addTag({name: 'og:type', content: 'website'})
+        this.meta.addTag({
+            name: 'og:title',
+            content: title,
+        })
+        this.meta.addTag({
+            name: 'og:description',
+            content: description,
+        })
+        // this.meta.addTag({name: 'og:image', content: description});
+    }
+
+    setActiveDocsMenu(name: string): void {
+        this.active = name
+    }
+
+    isActive(name: string) {
+        return this.active === name
     }
 }

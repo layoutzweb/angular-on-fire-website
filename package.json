@@ -1,6 +1,6 @@
 {
   "name": "angular-on-fire-website",
-  "version": "0.0.0",
+  "version": "0.0.1-2",
   "author": "Jair Milanes <jmilanes@dashfy.ca> (https://dashfy.ca)",
   "repository": "https://github.com/layoutzweb/angular-on-fire-website",
   "scripts": {
@@ -14,9 +14,11 @@
     "e2e:run": "npm run start && cypress run",
     "build": "ng build --configuration=emulator && ng run angular-on-fire-website:server:emulator --bundleDependencies all",
     "build:prod": "ng build --prod && ng run angular-on-fire-website:server:production --bundleDependencies all",
+    "build:staging": "ng build --configuration=staging && ng run angular-on-fire:server:staging --bundleDependencies all",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors --display=minimal",
     "build:ssr": "npm run build && npm run compile:server && gulp copyBuildToFunctions",
     "build:ssr:prod": "npm run build:prod && npm run compile:server && gulp copyBuildToFunctions",
+    "build:ssr:staging": "npm run build:staging && npm run compile:server && gulp copyBuildToFunctions",
     "emulator": "npm run build:ssr && firebase serve",
     "release:pre": "gulp release --type prerelease",
     "release:patch": "gulp release --type patch",
@@ -69,8 +71,10 @@
     "@types/jest": "^24.0.17",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "commitizen": "^4.0.3",
     "conventional-github-releaser": "^3.1.3",
     "cypress": "^3.4.1",
+    "cz-conventional-changelog": "^3.0.2",
     "debug": "^4.1.1",
     "del": "^5.0.0",
     "firebase-tools": "^7.2.2",
@@ -110,6 +114,15 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.1",
+    "utf-8-validate": "^5.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

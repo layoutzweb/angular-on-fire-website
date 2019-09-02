@@ -1,9 +1,9 @@
-@import '../partials/colors';
+@import '../../partials/colors';
 
 ::ng-deep {
-  .aof-tech-section {
-    h2 {
-      color: $primaryColor;
+    .aof-tech-section {
+        h2 {
+            color: $primaryColor;
+        }
     }
-  }
 }
