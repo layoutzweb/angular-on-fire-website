@@ -1,175 +1,206 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "angular-on-fire-website": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/browser",
-            "index": "src/template.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss",
-              "node_modules/prismjs/themes/prism.css",
-              "node_modules/prismjs/themes/prism-twilight.css",
-              "node_modules/prismjs/plugins/toolbar/prism-toolbar.css"
-            ],
-            "scripts": [
-              "node_modules/clipboard/dist/clipboard.js",
-              "node_modules/marked/lib/marked.js",
-              "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
-              "node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js",
-              "node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
-              "node_modules/prismjs/components/prism-basic.js",
-              "node_modules/prismjs/components/prism-bash.js",
-              "node_modules/prismjs/components/prism-json.js",
-              "node_modules/prismjs/components/prism-typescript.js",
-              "node_modules/prismjs/components/prism-markup.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "angular-on-fire-website": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": true,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
             },
-            "emulator": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.emulator.ts"
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/browser",
+                        "index": "src/template.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": [
+                            "src/styles.scss",
+                            "node_modules/prismjs/themes/prism.css",
+                            "node_modules/prismjs/themes/prism-twilight.css",
+                            "node_modules/prismjs/plugins/toolbar/prism-toolbar.css"
+                        ],
+                        "scripts": [
+                            "node_modules/clipboard/dist/clipboard.js",
+                            "node_modules/marked/lib/marked.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
+                            "node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js",
+                            "node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
+                            "node_modules/prismjs/components/prism-basic.js",
+                            "node_modules/prismjs/components/prism-bash.js",
+                            "node_modules/prismjs/components/prism-json.js",
+                            "node_modules/prismjs/components/prism-typescript.js",
+                            "node_modules/prismjs/components/prism-markup.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "staging": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.staging.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "emulator": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.emulator.ts"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": true,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "angular-on-fire-website:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "angular-on-fire-website:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "angular-on-fire-website:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "tsconfig.server.json",
+                            "functions/tsconfig.json",
+                            "cypress/tsconfig.json"
+                        ],
+                        "exclude": ["**/node_modules/**"],
+                        "files": []
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/server",
+                        "main": "src/main.server.ts",
+                        "tsConfig": "tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "sourceMap": false,
+                            "optimization": {
+                                "scripts": false,
+                                "styles": true
+                            }
+                        },
+                        "staging": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.staging.ts"
+                                }
+                            ],
+                            "sourceMap": true,
+                            "optimization": {
+                                "scripts": false,
+                                "styles": true
+                            }
+                        },
+                        "emulator": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.emulator.ts"
+                                }
+                            ],
+                            "sourceMap": false,
+                            "optimization": {
+                                "scripts": false,
+                                "styles": true
+                            }
+                        }
+                    }
                 }
-              ],
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": true,
-              "extractCss": true,
-              "namedChunks": true,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
             }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "angular-on-fire-website:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "angular-on-fire-website:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "angular-on-fire-website:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "tsconfig.server.json",
-              "functions/tsconfig.json",
-              "cypress/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ],
-            "files": [
-
-            ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
-            },
-            "emulator": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.emulator.ts"
-                }
-              ],
-              "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
-            }
-          }
         }
-      }
-    }},
-  "defaultProject": "angular-on-fire-website"
+    },
+    "defaultProject": "angular-on-fire-website"
 }
