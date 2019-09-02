@@ -77,7 +77,7 @@ jobs:
           name: Test Application
           command: npm run test
 
-  build:
+  build_prod:
     <<: *defaults
     steps:
       - checkout
@@ -87,6 +87,27 @@ jobs:
           name: Building application
           command: |
             npm run build:ssr:prod
+            cd functions
+            npm run build
+            cd ../
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - functions/lib
+            - functions/dist
+
+  build_staging:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_main_dependencies
+      - restore_cache: *restore_functions_dependencies
+      - run:
+          name: Building application
+          command: |
+            npm run build:ssr:staging
             cd functions
             npm run build
             cd ../
@@ -151,12 +172,12 @@ workflows:
       - lint:
           requires:
             - preload
-      - build:
+      - build_prod:
           requires:
             - lint
       - test:
           requires:
-            - build
+            - build_prod
 
   # Deploy every merge to next without a tag to staging
   deploy_staging:
@@ -170,12 +191,12 @@ workflows:
       - lint:
           requires:
             - preload
-      - build:
+      - build_staging:
           requires:
             - lint
       - test:
           requires:
-            - build
+            - build_staging
       - deploy_staging:
           requires:
             - test
@@ -197,7 +218,7 @@ workflows:
               ignore: /.*/
             tags:
               only: /.*/
-      - build:
+      - build_prod:
           requires:
             - lint
           filters:
@@ -207,7 +228,7 @@ workflows:
               only: /.*/
       - test:
           requires:
-            - build
+            - build_prod
           filters:
             branches:
               ignore: /.*/
