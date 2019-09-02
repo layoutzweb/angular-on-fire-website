@@ -14,9 +14,11 @@
     "e2e:run": "npm run start && cypress run",
     "build": "ng build --configuration=emulator && ng run angular-on-fire-website:server:emulator --bundleDependencies all",
     "build:prod": "ng build --prod && ng run angular-on-fire-website:server:production --bundleDependencies all",
+    "build:staging": "ng build --configuration=staging && ng run angular-on-fire:server:staging --bundleDependencies all",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors --display=minimal",
     "build:ssr": "npm run build && npm run compile:server && gulp copyBuildToFunctions",
     "build:ssr:prod": "npm run build:prod && npm run compile:server && gulp copyBuildToFunctions",
+    "build:ssr:staging": "npm run build:staging && npm run compile:server && gulp copyBuildToFunctions",
     "emulator": "npm run build:ssr && firebase serve",
     "release:pre": "gulp release --type prerelease",
     "release:patch": "gulp release --type patch",
@@ -111,5 +113,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.1",
+    "utf-8-validate": "^5.0.2"
   }
 }
