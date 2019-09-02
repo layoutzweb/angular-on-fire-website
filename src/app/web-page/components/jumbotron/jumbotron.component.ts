@@ -49,8 +49,8 @@ export class JumbotronComponent implements OnInit {
     }
 
     @HostListener('window:resize', ['$event'])
-    onResize() {
-        if (window.innerHeight > this.innerHeight) {
+    onResize(event) {
+        if (event && window.innerHeight > this.innerHeight) {
             this.innerHeight = window.innerHeight
         }
     }

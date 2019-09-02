@@ -2,7 +2,7 @@
     <ul>
         <li *ngFor="let item of items">
             <a
-                href="#{{ item.target }}"
+                href="/home#{{ item.target }}"
                 [appContextMenuActive]="active"
                 (click)="handleClick($event, item.name)"
             >
