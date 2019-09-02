@@ -1,8 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {Meta, Title} from '@angular/platform-browser'
 import {MarkdownService} from 'ngx-markdown'
 import {environment} from '../../environments/environment'
-import {JumbotronComponent} from './components/jumbotron/jumbotron.component'
 import {HttpClient} from '@angular/common/http'
 import {catchError, map} from 'rxjs/operators'
 import {BehaviorSubject, Observable} from 'rxjs'
@@ -16,11 +15,6 @@ import {ContextMenuAction} from './components/context-menu/context-menu.componen
     preserveWhitespaces: true,
 })
 export class WebPageComponent implements OnInit {
-    @ViewChild('jumbotronRef', {static: true})
-    jumbotronRef: JumbotronComponent
-    @ViewChild('documentation', {static: true})
-    documentationRef: JumbotronComponent
-
     config: any
     defaults = {
         title: '',

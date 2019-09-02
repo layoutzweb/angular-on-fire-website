@@ -1,12 +1,12 @@
 <div class="aof-page" appScrollDirective>
     <app-jumbotron
+        #jumbotronRef
         name="page-top"
         [version]="version$ | async"
         [config]="config"
         heading="On Fire"
         description="Angular Universal Development Environment Powered By Firebase"
         logoPath="assets/angular-logo-large.png"
-        #jumbotronRef
     >
     </app-jumbotron>
 
