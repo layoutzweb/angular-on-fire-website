@@ -1,3 +1,18 @@
+## [0.0.1-3](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-2...0.0.1-3) (2019-09-02)
+
+
+### Bug Fixes
+
+* **changelog:** fixed changelog creating repeated entries ([f20e73a](https://github.com/layoutzweb/angular-on-fire-website/commit/f20e73a))
+* **jumbotron:** fixed jumbotron build error ([2894104](https://github.com/layoutzweb/angular-on-fire-website/commit/2894104))
+
+
+### Features
+
+* **package:** added comitizen ([5c30f48](https://github.com/layoutzweb/angular-on-fire-website/commit/5c30f48))
+
+
+
 ## [0.0.1-2](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-1...0.0.1-2) (2019-09-02)
 
 
