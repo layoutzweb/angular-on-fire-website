@@ -4,12 +4,14 @@ import {
     ElementRef,
     HostListener,
     Input,
+    OnInit,
     ViewEncapsulation,
 } from '@angular/core'
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
 import {Observable} from 'rxjs'
 import {map} from 'rxjs/operators'
 import {Title} from '@angular/platform-browser'
+import {environment} from '../../../../environments/environment'
 
 @Component({
     selector: 'app-jumbotron',
@@ -18,13 +20,15 @@ import {Title} from '@angular/platform-browser'
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class JumbotronComponent {
+export class JumbotronComponent implements OnInit {
     @Input() name: string
     @Input() version: string
     @Input() heading: string
     @Input() description: string
     @Input() logoPath: string
+    @Input() config: any
 
+    pageName: string
     pageTitle: string
     innerHeight: number = window.innerHeight
     isHandset$: Observable<boolean>
@@ -37,12 +41,15 @@ export class JumbotronComponent {
         this.isHandset$ = this.layout
             .observe([Breakpoints.Handset])
             .pipe(map(result => result.matches))
+    }
 
+    ngOnInit(): void {
+        this.pageName = environment.page.name
         this.pageTitle = this.title.getTitle()
     }
 
     @HostListener('window:resize', ['$event'])
-    onResize(event) {
+    onResize() {
         if (window.innerHeight > this.innerHeight) {
             this.innerHeight = window.innerHeight
         }

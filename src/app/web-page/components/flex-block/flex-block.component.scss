@@ -1,40 +1,41 @@
-@import '../../partials/breakpoints';
+@import '../../../partials/breakpoints';
 
 .aof-flex-box {
-  padding: 60px 0;
+    padding: 60px 0;
 
-  figure {
-    height: 140px;
-    width: 140px;
-    overflow: hidden;
-    text-align: center;
+    figure {
+        height: 140px;
+        width: 140px;
+        overflow: hidden;
+        text-align: center;
 
-    & > img {
-      max-height: 100%;
+        & > img {
+            max-height: 100%;
 
-      @include layout-bp(gt-sm) {
-        max-height: 70%;
-      }
-    }
-  }
-
-  & > div {
-    flex: 1;
-
-    p, h3 {
-      text-align: center;
-
-      @include layout-bp(gt-sm) {
-        text-align: left;
-      }
+            @include layout-bp(gt-sm) {
+                max-height: 70%;
+            }
+        }
     }
 
-    p {
-      font-size: 16px;
+    & > div {
+        flex: 1;
 
-      @include layout-bp(gt-xs) {
-        text-align: justify;
-      }
+        p,
+        h3 {
+            text-align: center;
+
+            @include layout-bp(gt-sm) {
+                text-align: left;
+            }
+        }
+
+        p {
+            font-size: 16px;
+
+            @include layout-bp(gt-xs) {
+                text-align: justify;
+            }
+        }
     }
-  }
 }
