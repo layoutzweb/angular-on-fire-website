@@ -38,7 +38,6 @@ export class ScrollDirective implements OnDestroy {
             clientHeight,
             clientWidth,
         } = event.target
-        console.log('event', event)
         // Calculate the scroll percentage
         const percentage = Math.round(
             (scrollTop / (scrollHeight - clientHeight)) * 100
