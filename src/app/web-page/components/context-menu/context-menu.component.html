@@ -1,0 +1,13 @@
+<div class="aof-context-menu aof-{{ name }}-context-menu">
+    <ul>
+        <li *ngFor="let item of items">
+            <a
+                href="#{{ item.target }}"
+                [appContextMenuActive]="active"
+                (click)="handleClick($event, item.name)"
+            >
+                <strong>{{ item.label }}</strong>
+            </a>
+        </li>
+    </ul>
+</div>
