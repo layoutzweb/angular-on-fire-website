@@ -1,0 +1,24 @@
+<div class="aof-page aof-align-page aof-justify-page aof-page-not-found">
+    <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+        <div
+            class="aof-page-top"
+            fxFlex="60%"
+            [ngStyle]="{width: '100%'}"
+            fxLayout="column"
+            fxLayoutAlign="end center"
+        >
+            <div class="aof-bg-gradient"></div>
+            <h2>
+                Page <code>{{ path }}</code> Could Not Be Found
+            </h2>
+            <img src="/assets/404-robot.png" />
+        </div>
+        <div class="aof-page-bottom" fxFlex [ngStyle]="{width: '100%'}">
+            <!-- <h2><code>{{path}}</code> Was Not Found</h2> -->
+            <p>Here's a link to get you back in the right path</p>
+            <a href="/home" title="Go back to the home page">
+                Take me back home!
+            </a>
+        </div>
+    </div>
+</div>
