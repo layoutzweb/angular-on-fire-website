@@ -39,6 +39,11 @@ markdown {
         color: $headingColor;
     }
 
+    a {
+        color: $primaryColor;
+        text-decoration: none;
+    }
+
     h2,
     h3,
     h4 {
@@ -50,5 +55,9 @@ markdown {
 
     img {
         max-width: 100%;
+    }
+
+    pre[class*="language-"] {
+        margin-bottom: 20px;
     }
 }
