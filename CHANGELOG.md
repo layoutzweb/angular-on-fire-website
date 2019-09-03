@@ -1,6 +1,15 @@
 ## [0.0.1-4](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-3...0.0.1-4) (2019-09-03)
 
 
+### Reverts
+
+* **package:** reverted last version bump ([b25906b](https://github.com/layoutzweb/angular-on-fire-website/commit/b25906b))
+
+
+
+## [0.0.1-4](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-3...0.0.1-4) (2019-09-03)
+
+
 
 ## [0.0.1-3](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-2...0.0.1-3) (2019-09-02)
 
