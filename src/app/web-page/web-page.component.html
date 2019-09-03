@@ -71,7 +71,6 @@
     </app-content-section>
 
     <app-content-section
-        #documentation
         id="getting-started"
         name="documentation"
         title="Getting Started"
@@ -89,17 +88,19 @@
                     [items]="contextMenu$ | async"
                 ></app-context-menu>
             </div>
-            <div fxFlex="100%" fxFlex.gt-sm="auto" fxLayout="column">
+            <div fxFlex fxLayout="column">
                 <p>
                     Because Angular On Fire gives you a complete development
                     environment, there are a few steps you have to follow in
                     order to plug everything together, but don't worry, we made
                     it simple to do so
                 </p>
-                <app-documentation
-                    [config]="config"
-                    (context)="contextMenu.next($event)"
-                ></app-documentation>
+                <div [ngStyle]="{overflow: 'hidden'}">
+                    <app-documentation
+                        [config]="config"
+                        (context)="contextMenu.next($event)"
+                    ></app-documentation>
+                </div>
             </div>
         </div>
     </app-content-section>
