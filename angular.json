@@ -24,10 +24,9 @@
                         "tsConfig": "tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
+                            "src/styles.scss",
                             "node_modules/prismjs/themes/prism.css",
-                            "node_modules/prismjs/themes/prism-twilight.css",
-                            "node_modules/prismjs/plugins/toolbar/prism-toolbar.css",
-                            "src/styles.scss"
+                            "node_modules/prismjs/plugins/toolbar/prism-toolbar.css"
                         ],
                         "scripts": [
                             "node_modules/clipboard/dist/clipboard.js",

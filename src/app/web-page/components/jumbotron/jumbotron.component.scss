@@ -72,15 +72,19 @@
         left: 0;
         right: 0;
 
-        & > div:first-child {
-            background: linear-gradient(360deg, $primaryColor, $accentColor);
-            background-size: 100%;
-        }
+        & > div {
+            &:first-child,
+            &:last-child {
+                font-size: 0;
+            }
 
-        ::ng-deep {
-            svg {
-                height: 100%;
-                max-width: 100%;
+            &:first-child {
+                background: linear-gradient(
+                    360deg,
+                    $primaryColor,
+                    $accentColor
+                );
+                background-size: 100%;
             }
         }
     }

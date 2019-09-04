@@ -9,35 +9,7 @@ import {
 
 @Component({
     selector: 'app-flex-block',
-    template: `
-        <div
-            class="aof-flex-box"
-            [ngClass]="classNames"
-            fxLayout="column"
-            [fxLayout.gt-sm]="reverse ? 'row-reverse' : 'row'"
-            fxLayoutAlign="center flex-start"
-            fxLayoutGap="40px"
-        >
-            <figure [fxFlex]="figureSize" *ngIf="image || icon">
-                <img
-                    *ngIf="image && !isSvg"
-                    src="/assets/{{ image }}"
-                    [alt]="title || ''"
-                />
-                <div
-                    *ngIf="image && isSvg"
-                    inlineSVG="/assets/{{ image }}"
-                    [forceEvalStyles]="true"
-                ></div>
-                <fa-icon *ngIf="icon" [icon]="icon" [size]="iconSize"></fa-icon>
-            </figure>
-            <div>
-                <h3 *ngIf="title">{{ title }}</h3>
-                <p *ngIf="content">{{ content }}</p>
-                <ng-content></ng-content>
-            </div>
-        </div>
-    `,
+    templateUrl: './flex-block.component.html',
     styleUrls: ['./flex-block.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
@@ -49,6 +21,7 @@ export class FlexBlockComponent implements OnChanges {
     @Input() title?: string
     @Input() content?: string
     @Input() reverse?: boolean
+    @Input() reverseText?: boolean
     @Input() dense = false
     @Input() figureSize: boolean | string = false
 
@@ -65,6 +38,10 @@ export class FlexBlockComponent implements OnChanges {
 
         if ('reverse' in changes) {
             this.classNames['aof-flex-block-reversed'] = this.reverse
+        }
+
+        if ('reverseText' in changes) {
+            this.classNames['aof-flex-block-text-reversed'] = this.reverseText
         }
 
         if ('dense' in changes) {

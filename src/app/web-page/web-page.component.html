@@ -37,14 +37,12 @@
             fxLayout="column"
         >
             <div
-                fxFlex="80px"
                 class="aof-tech-top-frame"
                 inlineSVG="/assets/jumbotron-bottom-frame-inversed.svg"
                 [forceEvalStyles]="true"
             ></div>
             <div class="aof-tech-frame-spacer" fxFlex></div>
             <div
-                fxFlex="80px"
                 class="aof-tech-bottom-frame"
                 inlineSVG="/assets/jumbotron-bottom-frame.svg"
                 [forceEvalStyles]="true"
@@ -142,31 +140,18 @@
         title="Getting Started"
         description=""
     >
-        <div
-            class="aof-docs-container"
-            fxFlex
-            fxLayout="row"
-            fxLayoutGap.gt-sm="30px"
-        >
+        <div class="aof-docs-container" fxLayout="row" fxLayoutGap.gt-sm="30px">
             <div fxHide fxFlex.gt-sm="210px" fxShow.gt-sm="true">
                 <app-context-menu
                     name="docs"
                     [items]="contextMenu$ | async"
                 ></app-context-menu>
             </div>
-            <div fxFlex fxLayout="column">
-                <p>
-                    Because Angular On Fire gives you a complete development
-                    environment, there are a few steps you have to follow in
-                    order to plug everything together, but don't worry, we made
-                    it simple to do so
-                </p>
-                <div [ngStyle]="{overflow: 'hidden'}">
-                    <app-documentation
-                        [config]="config"
-                        (context)="contextMenu.next($event)"
-                    ></app-documentation>
-                </div>
+            <div fxFlex="100%" fxLayout="column">
+                <app-documentation
+                    [config]="config"
+                    (context)="contextMenu.next($event)"
+                ></app-documentation>
             </div>
         </div>
     </app-content-section>

@@ -30,7 +30,6 @@
     }
 
     p {
-        font-size: 16px;
         text-align: justify;
 
         @include layout-bp(gt-sm) {
@@ -38,7 +37,7 @@
         }
     }
 
-    /* &.aof-flex-block-reversed {
+    &.aof-flex-block-text-reversed {
         h3 {
             text-align: center;
 
@@ -54,7 +53,7 @@
                 text-align: right;
             }
         }
-    } */
+    }
 
     &.aof-flex-block-dense {
         padding: 20px 0;

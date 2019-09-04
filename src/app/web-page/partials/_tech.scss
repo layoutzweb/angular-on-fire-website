@@ -35,10 +35,14 @@
             background-size: 100%;
         }
 
-        svg {
-            max-height: 101%;
-            width: 100%;
+        & > div {
+            &:first-child,
+            &:last-child {
+                font-size: 0;
+            }
+        }
 
+        svg {
             path {
                 fill: $backgroundDarkColor !important;
             }
@@ -56,16 +60,16 @@
             }
         }
 
-      &.aof-flex-block-testing {
-        figure {
-          color: $primaryColor;
+        &.aof-flex-block-testing {
+            figure {
+                color: $primaryColor;
+            }
         }
-      }
 
-      &.aof-flex-block-code-quality {
-        figure {
-          color: #8ec01f;
+        &.aof-flex-block-code-quality {
+            figure {
+                color: #8ec01f;
+            }
         }
-      }
     }
 }

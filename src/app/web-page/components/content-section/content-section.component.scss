@@ -28,13 +28,11 @@
     }
 
     & > p {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 20px;
         text-align: center;
 
         @include layout-bp(gt-sm) {
-            font-size: 22px;
-            line-height: 28px;
+            font-size: 24px;
         }
     }
 }
