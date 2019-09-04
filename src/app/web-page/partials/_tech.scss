@@ -55,5 +55,17 @@
                 max-height: 250px;
             }
         }
+
+      &.aof-flex-block-testing {
+        figure {
+          color: $primaryColor;
+        }
+      }
+
+      &.aof-flex-block-code-quality {
+        figure {
+          color: #8ec01f;
+        }
+      }
     }
 }
