@@ -65,6 +65,26 @@
         }
     }
 
+    .aof-jumbotron-background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        & > div:first-child {
+            background: linear-gradient(360deg, $primaryColor, $accentColor);
+            background-size: 100%;
+        }
+
+        ::ng-deep {
+            svg {
+                height: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
     .aof-main-action {
         display: inline-block;
         padding: 0 40px;
@@ -116,18 +136,5 @@
 
     & > * {
         z-index: 5;
-    }
-
-    .aof-jumbotron-background {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-
-        & > div:first-child {
-            background: linear-gradient(360deg, $primaryColor, $accentColor);
-            background-size: 100%;
-        }
     }
 }

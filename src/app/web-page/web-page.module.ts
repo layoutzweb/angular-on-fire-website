@@ -4,7 +4,12 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faGithubAlt, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
-import {faAngleUp, faCode} from '@fortawesome/free-solid-svg-icons'
+import {
+    faAngleUp,
+    faCode,
+    faBug,
+    faCalendarCheck,
+} from '@fortawesome/free-solid-svg-icons'
 import {HttpClient, HttpClientModule} from '@angular/common/http'
 import {MarkdownModule} from 'ngx-markdown'
 import {InlineSVGModule} from 'ng-inline-svg'
@@ -50,6 +55,13 @@ import {ScrollService} from './services/scroll.service'
 })
 export class WebPageModule {
     constructor() {
-        library.add(faLinkedinIn, faGithubAlt, faAngleUp, faCode)
+        library.add(
+            faLinkedinIn,
+            faGithubAlt,
+            faAngleUp,
+            faCode,
+            faBug,
+            faCalendarCheck
+        )
     }
 }

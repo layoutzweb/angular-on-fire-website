@@ -14,6 +14,7 @@ import {
             fxLayout="row"
             fxLayoutAlign="center center"
         >
+            <ng-content select="[aof-before-section-content]"></ng-content>
             <div class="aof-section-container" fxFlex fxFlex.gt-sm="960px">
                 <h2 *ngIf="title">{{ title }}</h2>
                 <p *ngIf="description">{{ description }}</p>
@@ -21,6 +22,7 @@ import {
                     <ng-content></ng-content>
                 </div>
             </div>
+            <ng-content select="[aof-after-section-content]"></ng-content>
         </section>
     `,
     styleUrls: ['./content-section.component.scss'],

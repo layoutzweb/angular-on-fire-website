@@ -1,9 +1,59 @@
 @import '../../partials/colors';
 
 ::ng-deep {
-    .aof-tech-section {
-        h2 {
-            color: $primaryColor;
+    .aof-section {
+        &.aof-tech-section {
+            padding-top: 160px;
+            padding-bottom: 160px;
+            background: white;
+            color: rgba(white, 0.8);
+
+            h2 {
+                color: $primaryColor;
+            }
+
+            h3 {
+                color: white;
+            }
+
+            * {
+                z-index: 100;
+            }
+        }
+    }
+
+    .aof-tech-background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+
+        & > .aof-tech-frame-spacer {
+            background: $backgroundDarkColor;
+            background-size: 100%;
+        }
+
+        svg {
+            max-height: 101%;
+            width: 100%;
+
+            path {
+                fill: $backgroundDarkColor !important;
+            }
+        }
+
+        .aof-tech-bottom-frame {
+            background: $alternateBackgroundColor;
+        }
+    }
+
+    .aof-flex-box {
+        figure {
+            svg {
+                max-height: 250px;
+            }
         }
     }
 }

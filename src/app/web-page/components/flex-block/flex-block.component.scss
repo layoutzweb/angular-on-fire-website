@@ -4,8 +4,6 @@
     padding: 60px 0;
 
     figure {
-        height: 140px;
-        width: 140px;
         overflow: hidden;
         text-align: center;
 
@@ -20,22 +18,45 @@
 
     & > div {
         flex: 1;
+    }
 
-        p,
+    p,
+    h3 {
+        text-align: center;
+
+        @include layout-bp(gt-sm) {
+            text-align: left;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        text-align: justify;
+
+        @include layout-bp(gt-sm) {
+            text-align: left;
+        }
+    }
+
+    /* &.aof-flex-block-reversed {
         h3 {
             text-align: center;
 
             @include layout-bp(gt-sm) {
-                text-align: left;
+                text-align: right;
             }
         }
 
-        p {
-            font-size: 16px;
+        * {
+            text-align: justify;
 
-            @include layout-bp(gt-xs) {
-                text-align: justify;
+            @include layout-bp(gt-sm) {
+                text-align: right;
             }
         }
+    } */
+
+    &.aof-flex-block-dense {
+        padding: 20px 0;
     }
 }

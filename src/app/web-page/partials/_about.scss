@@ -1,0 +1,22 @@
+@import '../../partials/colors';
+
+::ng-deep {
+    .aof-about-section {
+        background: white;
+
+        .aof-section-content {
+            padding-top: 0;
+        }
+    }
+}
+
+.aof-about-content {
+    p {
+        font-size: 22px;
+        text-align: center;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
