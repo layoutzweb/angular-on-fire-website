@@ -70,7 +70,7 @@ describe('FlexBox', () => {
     })
 
     // inputs
-    it('should contain a title', () => {
+    it('should display a title', () => {
         instance.title = 'test'
 
         fixture.detectChanges()
@@ -92,20 +92,27 @@ describe('FlexBox', () => {
         ).toEqual('test')
     })
 
-    it('should set a name class', () => {
+    it('should set a input classes', () => {
         instance.name = 'test'
+        instance.reverse = true
+        instance.reverseText = true
+        instance.dense = true
 
         instance.ngOnChanges({
             name: new SimpleChange(null, instance.name, true),
+            reverse: new SimpleChange(null, instance.reverse, true),
+            reverseText: new SimpleChange(null, instance.reverseText, true),
+            dense: new SimpleChange(null, instance.dense, true)
         })
 
         fixture.detectChanges()
 
-        expect(
-            compiled
-                .querySelector('.aof-flex-box')
-                .classList.contains('aof-flex-block-test')
-        ).toBeTruthy()
+        const {classList} = compiled.querySelector('.aof-flex-box')
+
+        expect(classList.contains('aof-flex-block-test')).toBeTruthy()
+        expect(classList.contains('aof-flex-block-reversed')).toBeTruthy()
+        expect(classList.contains('aof-flex-block-text-reversed')).toBeTruthy()
+        expect(classList.contains('aof-flex-block-dense')).toBeTruthy()
     })
 
     it('should set a reverse the row display', () => {
