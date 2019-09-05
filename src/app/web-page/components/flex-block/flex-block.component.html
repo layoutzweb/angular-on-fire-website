@@ -1,0 +1,27 @@
+<div
+    [ngClass]="classNames"
+    class="aof-flex-box"
+    fxLayout="column"
+    fxLayout.gt-sm="{{ reverse ? 'row-reverse' : 'row' }}"
+    fxLayoutAlign="center flex-start"
+    fxLayoutGap="40px"
+>
+    <figure [fxFlex]="figureSize" *ngIf="image || icon">
+        <img
+            *ngIf="image && !isSvg"
+            src="/assets/{{ image }}"
+            [alt]="title || ''"
+        />
+        <div
+            *ngIf="image && isSvg"
+            inlineSVG="/assets/{{ image }}"
+            [forceEvalStyles]="true"
+        ></div>
+        <fa-icon *ngIf="icon" [icon]="icon" [size]="iconSize"></fa-icon>
+    </figure>
+    <div>
+        <h3 *ngIf="title">{{ title }}</h3>
+        <p *ngIf="content">{{ content }}</p>
+        <ng-content></ng-content>
+    </div>
+</div>

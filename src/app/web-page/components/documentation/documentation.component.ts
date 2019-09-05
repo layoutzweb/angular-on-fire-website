@@ -1,4 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewEncapsulation,
+} from '@angular/core'
 import {MarkdownService} from 'ngx-markdown'
 import {ContextMenuAction} from '../context-menu/context-menu.component'
 
@@ -6,6 +14,8 @@ import {ContextMenuAction} from '../context-menu/context-menu.component'
     selector: 'app-documentation',
     templateUrl: './documentation.component.html',
     styleUrls: ['./documentation.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentationComponent implements OnInit {
     @Input() config: any

@@ -1,52 +1,73 @@
+@import '../../../partials/breakpoints';
 @import '../../../partials/colors';
 
+.aof-documentation {
+    text-align: justify;
+
+    @include layout-bp(gt-sm) {
+        text-align: left;
+    }
+}
+
 markdown {
-    ::ng-deep {
-        code {
-            background-color: rgba(27, 31, 35, 0.05);
-            border-radius: 3px;
-            font-size: 85%;
-            margin: 0;
-            padding: 0.2em 0.4em;
-        }
+    h2 {
+        font-size: 36px;
+        line-height: 44px;
+        margin-top: 20px;
+        padding-top: 35px;
+        color: $primaryColor;
+    }
 
-        h2 {
-            font-size: 36px;
-            line-height: 44px;
-            margin-top: 20px;
-            padding-top: 35px;
-            color: $primaryColor;
-        }
+    h3 {
+        font-size: 22px;
+        margin-top: 40px;
+    }
 
-        h3 {
-            font-size: 22px;
-            margin-top: 40px;
-        }
+    h4 {
+        font-size: 18px;
+        margin-top: 30px;
+    }
 
-        h4 {
-            font-size: 18px;
-            margin-top: 30px;
-        }
+    h3,
+    h4 {
+        opacity: 0.8;
+        margin-bottom: 10px;
+    }
 
-        h3,
-        h4 {
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
+    h3,
+    h4,
+    strong {
+        color: $headingColor;
+    }
 
-        h3,
-        h4,
-        strong {
-            color: $headingColor;
-        }
+    a {
+        color: $primaryColor;
+        text-decoration: none;
+    }
 
-        h2,
-        h3,
-        h4 {
-            & > a {
-                text-decoration: none;
-                color: inherit;
-            }
+    h2,
+    h3,
+    h4 {
+        & > a {
+            text-decoration: none;
+            color: inherit;
         }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: left;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    pre[class*='language-'] {
+        margin-bottom: 20px;
     }
 }

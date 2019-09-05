@@ -1,6 +1,6 @@
 <section
     [id]="name"
-    class="aof-jumbotron"
+    class="aof-jumbotron aof-{{ name }}-jumbotron"
     [ngStyle]="{height: innerHeight + 'px'}"
 >
     <div class="aof-jumbotron-background" fxLayout="column">
@@ -8,6 +8,7 @@
         <div
             class="aof-jumbotron-bottom-frame"
             inlineSVG="/assets/jumbotron-bottom-frame.svg"
+            [forceEvalStyles]="true"
         ></div>
     </div>
     <div class="aof-angular-logo">

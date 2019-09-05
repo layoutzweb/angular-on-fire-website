@@ -1,7 +1,6 @@
 import {ComponentFixture, async, TestBed} from '@angular/core/testing'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {FlamesComponent} from './flames.component'
-import {ChangeDetectionStrategy} from '@angular/core'
 
 describe('Flames', () => {
     let fixture: ComponentFixture<FlamesComponent>

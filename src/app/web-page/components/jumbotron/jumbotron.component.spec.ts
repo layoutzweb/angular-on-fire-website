@@ -4,6 +4,8 @@ import {BrowserModule} from '@angular/platform-browser'
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {FlamesComponent} from '../flames/flames.component'
 import {JumbotronComponent} from './jumbotron.component'
+import {InlineSVGModule} from 'ng-inline-svg'
+import {HttpClientModule} from '@angular/common/http'
 
 describe('Jumbotron', () => {
     let fixture: ComponentFixture<JumbotronComponent>
@@ -12,7 +14,12 @@ describe('Jumbotron', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [BrowserModule, FlexLayoutModule, FontAwesomeModule],
+            imports: [
+                HttpClientModule,
+                FlexLayoutModule,
+                FontAwesomeModule,
+                InlineSVGModule.forRoot(),
+            ],
             declarations: [FlamesComponent, JumbotronComponent],
         })
 

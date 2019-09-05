@@ -22,12 +22,10 @@
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
-                        "aot": true,
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
                             "src/styles.scss",
                             "node_modules/prismjs/themes/prism.css",
-                            "node_modules/prismjs/themes/prism-twilight.css",
                             "node_modules/prismjs/plugins/toolbar/prism-toolbar.css"
                         ],
                         "scripts": [

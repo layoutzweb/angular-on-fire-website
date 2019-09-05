@@ -1,10 +1,12 @@
+.aof-demo-container {
+    height: 500px;
+}
+
 @import '../partials/colors';
+@import './partials/hero';
 @import './partials/flames';
 @import './partials/list';
 @import './partials/docs';
 @import './partials/tech';
+@import './partials/about';
 @import './partials/contributions';
-
-.aof-demo-container {
-    height: 500px;
-}
