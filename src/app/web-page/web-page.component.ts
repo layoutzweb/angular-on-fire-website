@@ -52,8 +52,6 @@ export class WebPageComponent implements OnInit {
         this.seo()
         this.docs()
 
-        console.log('env', environment)
-
         if (social) {
             if (social.twitter) {
                 this.addTwitterTags()
