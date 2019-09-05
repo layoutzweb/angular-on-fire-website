@@ -6,6 +6,9 @@ import {
     SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core'
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
+import {map} from 'rxjs/operators'
+import {Observable} from 'rxjs'
 
 @Component({
     selector: 'app-flex-block',
@@ -23,11 +26,15 @@ export class FlexBlockComponent implements OnChanges {
     @Input() reverse = false
     @Input() reverseText?: boolean
     @Input() dense = false
-    @Input() figureSize: boolean | string = false
+    @Input() figureSize: string
 
     classNames: {[name: string]: boolean}
     isSvg: boolean
     iconSize = '1x'
+    layout$: Observable<'row' | 'column' | 'row-reverse'>
+    figureSize$: Observable<string>
+
+    constructor(private mediaQuery: BreakpointObserver) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         this.classNames = {}
@@ -53,5 +60,26 @@ export class FlexBlockComponent implements OnChanges {
         if (this.icon && this.icon.length === 3) {
             this.iconSize = this.icon.pop()
         }
+
+        this.layout$ = this.mediaQuery
+            .observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
+            .pipe(
+                map(query => {
+                    if (query.matches) {
+                        return 'column'
+                    } else {
+                        return this.reverse ? 'row-reverse' : 'row'
+                    }
+                })
+            )
+
+        this.figureSize$ = this.layout$.pipe(
+            map(direction => {
+                if (direction === 'column') {
+                    return '100%'
+                }
+                return this.figureSize || '40%'
+            })
+        )
     }
 }

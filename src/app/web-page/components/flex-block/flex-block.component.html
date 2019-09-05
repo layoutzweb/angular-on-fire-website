@@ -1,12 +1,11 @@
 <div
     [ngClass]="classNames"
     class="aof-flex-box"
-    fxLayout="column"
-    fxLayout.gt-sm="{{ reverse ? 'row-reverse' : 'row' }}"
+    [fxLayout]="layout$ | async"
     fxLayoutAlign="center flex-start"
     fxLayoutGap="40px"
 >
-    <figure [fxFlex]="figureSize" *ngIf="image || icon">
+    <figure [ngStyle]="{width: figureSize$ | async}" *ngIf="image || icon">
         <img
             *ngIf="image && !isSvg"
             src="/assets/{{ image }}"
