@@ -1,9 +1,9 @@
 <div
-    class="aof-flex-box"
     [ngClass]="classNames"
+    class="aof-flex-box"
     fxLayout="column"
-    [fxLayout.gt-sm]="reverse ? 'row-reverse' : 'row'"
-    fxLayoutAlign.gt-sm="center flex-start"
+    fxLayout.gt-sm="{{ reverse ? 'row-reverse' : 'row' }}"
+    fxLayoutAlign="center flex-start"
     fxLayoutGap="40px"
 >
     <figure [fxFlex]="figureSize" *ngIf="image || icon">

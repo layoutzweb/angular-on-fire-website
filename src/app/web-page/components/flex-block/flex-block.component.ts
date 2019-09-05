@@ -20,7 +20,7 @@ export class FlexBlockComponent implements OnChanges {
     @Input() icon?: string[]
     @Input() title?: string
     @Input() content?: string
-    @Input() reverse?: boolean
+    @Input() reverse = false
     @Input() reverseText?: boolean
     @Input() dense = false
     @Input() figureSize: boolean | string = false
@@ -32,7 +32,7 @@ export class FlexBlockComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         this.classNames = {}
 
-        if ('name' in changes) {
+        if ('name' in changes && this.name) {
             this.classNames[`aof-flex-block-${this.name}`] = true
         }
 
