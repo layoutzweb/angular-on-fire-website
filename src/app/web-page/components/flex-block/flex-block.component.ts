@@ -34,7 +34,28 @@ export class FlexBlockComponent implements OnChanges {
     layout$: Observable<'row' | 'column' | 'row-reverse'>
     figureSize$: Observable<string>
 
-    constructor(private mediaQuery: BreakpointObserver) {}
+    constructor(private mediaQuery: BreakpointObserver) {
+        this.layout$ = this.mediaQuery
+            .observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
+            .pipe(
+                map(query => {
+                    if (query.matches) {
+                        return 'column'
+                    } else {
+                        return this.reverse ? 'row-reverse' : 'row'
+                    }
+                })
+            )
+
+        this.figureSize$ = this.layout$.pipe(
+            map(direction => {
+                if (direction === 'column') {
+                    return '100%'
+                }
+                return this.figureSize || '40%'
+            })
+        )
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         this.classNames = {}
@@ -60,26 +81,5 @@ export class FlexBlockComponent implements OnChanges {
         if (this.icon && this.icon.length === 3) {
             this.iconSize = this.icon.pop()
         }
-
-        this.layout$ = this.mediaQuery
-            .observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-            .pipe(
-                map(query => {
-                    if (query.matches) {
-                        return 'column'
-                    } else {
-                        return this.reverse ? 'row-reverse' : 'row'
-                    }
-                })
-            )
-
-        this.figureSize$ = this.layout$.pipe(
-            map(direction => {
-                if (direction === 'column') {
-                    return '100%'
-                }
-                return this.figureSize || '40%'
-            })
-        )
     }
 }
