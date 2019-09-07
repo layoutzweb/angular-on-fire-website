@@ -1,177 +1,187 @@
 <div class="aof-page" appScrollDirective>
-    <app-jumbotron
-        #jumbotronRef
-        name="page-top"
-        [version]="version$ | async"
-        [config]="config"
-        heading="On Fire"
-        description="Angular Universal Development Environment Powered By Firebase"
-        logoPath="assets/angular-logo-large.png"
-    >
-    </app-jumbotron>
+    <div>
+        <app-jumbotron
+            #jumbotronRef
+            name="page-top"
+            [version]="version$ | async"
+            [config]="config"
+            heading="On Fire"
+            description="Angular Universal Development Environment Powered By Firebase"
+            logoPath="assets/angular-logo-large.png"
+        >
+        </app-jumbotron>
 
-    <app-content-section name="about">
-        <div class="aof-about-content">
-            <p>
-                Starting a software project takes time, deciding which tools to
-                use, configuring CI/CD pipelines, maintaining code quality,
-                protecting code against unstable changes, unit tests, e2e tests,
-                in fact there is a too much to think about.
-            </p>
+        <app-content-section name="about">
+            <div class="aof-about-content">
+                <p>
+                    Starting a software project takes time, deciding which tools
+                    to use, configuring CI/CD pipelines, maintaining code
+                    quality, protecting code against unstable changes, unit
+                    tests, e2e tests, in fact there is a too much to think
+                    about.
+                </p>
 
-            <p>
-                <strong>Angular On Fire</strong> was created to take a bit of
-                that burden off your shoulders.
-            </p>
-        </div>
-    </app-content-section>
+                <p>
+                    <strong>Angular On Fire</strong> was created to take a bit
+                    of that burden off your shoulders.
+                </p>
+            </div>
+        </app-content-section>
 
-    <app-content-section
-        name="tech"
-        title="Angular + Firebase"
-        description="Angular On Fire put's the power of Angular & Angular Cli with Firebase fast and reliable services and infrastructure in one package"
-    >
-        <div
-            aof-before-section-content
-            class="aof-tech-background"
-            fxLayout="column"
+        <app-content-section
+            name="tech"
+            title="Angular + Firebase"
+            description="Angular On Fire put's the power of Angular & Angular Cli with Firebase fast and reliable services and infrastructure in one package"
         >
             <div
-                class="aof-tech-top-frame"
-                inlineSVG="/assets/jumbotron-bottom-frame-inversed.svg"
-                [forceEvalStyles]="true"
-            ></div>
-            <div class="aof-tech-frame-spacer" fxFlex></div>
+                aof-before-section-content
+                class="aof-tech-background"
+                fxLayout="column"
+            >
+                <div
+                    class="aof-tech-top-frame"
+                    inlineSVG="/assets/jumbotron-bottom-frame-inversed.svg"
+                    [forceEvalStyles]="true"
+                ></div>
+                <div class="aof-tech-frame-spacer" fxFlex></div>
+                <div
+                    class="aof-tech-bottom-frame"
+                    inlineSVG="/assets/jumbotron-bottom-frame.svg"
+                    [forceEvalStyles]="true"
+                ></div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="100%" fxFlex.gt-sm="90%" fxLayout="column">
+                    <app-flex-block
+                        fxFlex
+                        name="angular-universal"
+                        title="Angular Universal Starter Project"
+                        image="svg/angular-logo.svg"
+                        figureSize="40%"
+                        [reverse]="true"
+                    >
+                        <p>
+                            Angular is one of the most powerful front-end
+                            frameworks in the market, coupled with Angular-Cli
+                            it is like Hulk on gamma steroids.
+                        </p>
+                        <p>
+                            Angular On Fire harnesses that power by giving you a
+                            Angular Universal (SSR) starter project, packet with
+                            the latest RXJS & Flex Layout, to make creating
+                            fast, responsive, SEO friendly applications a breeze
+                        </p>
+                    </app-flex-block>
+
+                    <app-flex-block
+                        fxFlex
+                        name="firebase-integration"
+                        title="Full Firebase Integration"
+                        image="svg/firebase-logo.svg"
+                        figureSize="40%"
+                    >
+                        <p>
+                            Firebase has a lot to offer, it's free to start and
+                            has a pay only for what you use model, that makes it
+                            perfect for start up's and independent developers
+                            that want to get powerful apps out, without worrying
+                            about infrastructure.
+                        </p>
+                        <p>Out of the box Angular On Fire provides:</p>
+                        <ul>
+                            <li>
+                                Multi environment Firebase Hosting deployment
+                                (production & staging)
+                            </li>
+                            <li>
+                                Firebase services integration with
+                                <i>AngularFire 2</i>
+                            </li>
+                        </ul>
+                    </app-flex-block>
+
+                    <app-flex-block
+                        fxFlex
+                        name="code-quality"
+                        title="Automated code quality enforcement"
+                        content="Code quality is important, but enforcing it, is hard, so we made it easy by integrating linting and formatting tools with git hooks and CI/CD pipelines, to make sure, only code that meets the standards makes the cut."
+                        figureSize="40%"
+                        [icon]="['fas', 'calendar-check', '9x']"
+                        [reverse]="true"
+                    >
+                    </app-flex-block>
+
+                    <app-flex-block
+                        fxFlex
+                        name="testing"
+                        title="Customized unit and e2e test environments"
+                        content="Testing increases your confidence in your project code base, Angular On Fire improves you test development experience by integrating Jest and Cypress, providing a modern test environment that is easy to use and maintain."
+                        figureSize="40%"
+                        [icon]="['fas', 'bug', '9x']"
+                    >
+                    </app-flex-block>
+
+                    <app-flex-block
+                        fxFlex
+                        name="pipelines"
+                        title="Ci/CD pipelines with Circle CI"
+                        content="It's important to get code into live environments as often as possible, this keeps the ball rolling between engineers, testers and product owners, Angular On Fire comes with pre-configured testing and deployment pipelines, so as you merge new features in, code gets tested and deployed to the right environments automatically."
+                        image="circleci-logo.png"
+                        figureSize="40%"
+                        [reverse]="true"
+                    >
+                    </app-flex-block>
+                </div>
+            </div>
+        </app-content-section>
+
+        <app-content-section
+            id="getting-started"
+            name="documentation"
+            title="Getting Started"
+            description=""
+        >
             <div
-                class="aof-tech-bottom-frame"
-                inlineSVG="/assets/jumbotron-bottom-frame.svg"
-                [forceEvalStyles]="true"
-            ></div>
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <div fxFlex="100%" fxFlex.gt-sm="90%" fxLayout="column">
-                <app-flex-block
-                    fxFlex
-                    name="angular-universal"
-                    title="Angular Universal Starter Project"
-                    image="svg/angular-logo.svg"
-                    figureSize="40%"
-                    [reverse]="true"
-                >
-                    <p>
-                        Angular is one of the most powerful front-end frameworks
-                        in the market, coupled with Angular-Cli it is like Hulk
-                        on gamma steroids.
-                    </p>
-                    <p>
-                        Angular On Fire harnesses that power by giving you a
-                        Angular Universal (SSR) starter project, packet with the
-                        latest RXJS & Flex Layout, to make creating fast,
-                        responsive, SEO friendly applications a breeze
-                    </p>
-                </app-flex-block>
-
-                <app-flex-block
-                    fxFlex
-                    name="firebase-integration"
-                    title="Full Firebase Integration"
-                    image="svg/firebase-logo.svg"
-                    figureSize="40%"
-                >
-                    <p>
-                        Firebase has a lot to offer, it's free to start and has
-                        a pay only for what you use model, that makes it perfect
-                        for start up's and independent developers that want to
-                        get powerful apps out, without worrying about
-                        infrastructure.
-                    </p>
-                    <p>Out of the box Angular On Fire provides:</p>
-                    <ul>
-                        <li>
-                            Multi environment Firebase Hosting deployment
-                            (production & staging)
-                        </li>
-                        <li>
-                            Firebase services integration with
-                            <i>AngularFire 2</i>
-                        </li>
-                    </ul>
-                </app-flex-block>
-
-                <app-flex-block
-                    fxFlex
-                    name="code-quality"
-                    title="Automated code quality enforcement"
-                    content="Code quality is important, but enforcing it, is hard, so we made it easy by integrating linting and formatting tools with git hooks and CI/CD pipelines, to make sure, only code that meets the standards makes the cut."
-                    figureSize="40%"
-                    [icon]="['fas', 'calendar-check', '9x']"
-                    [reverse]="true"
-                >
-                </app-flex-block>
-
-                <app-flex-block
-                    fxFlex
-                    name="testing"
-                    title="Customized unit and e2e test environments"
-                    content="Testing increases your confidence in your project code base, Angular On Fire improves you test development experience by integrating Jest and Cypress, providing a modern test environment that is easy to use and maintain."
-                    figureSize="40%"
-                    [icon]="['fas', 'bug', '9x']"
-                >
-                </app-flex-block>
-
-                <app-flex-block
-                    fxFlex
-                    name="pipelines"
-                    title="Ci/CD pipelines with Circle CI"
-                    content="It's important to get code into live environments as often as possible, this keeps the ball rolling between engineers, testers and product owners, Angular On Fire comes with pre-configured testing and deployment pipelines, so as you merge new features in, code gets tested and deployed to the right environments automatically."
-                    image="circleci-logo.png"
-                    figureSize="40%"
-                    [reverse]="true"
-                >
-                </app-flex-block>
+                class="aof-docs-container"
+                fxLayout="row"
+                fxLayoutGap.gt-sm="30px"
+            >
+                <div fxHide fxFlex.gt-sm="210px" fxShow.gt-sm="true">
+                    <app-context-menu
+                        name="docs"
+                        [items]="contextMenu$ | async"
+                    ></app-context-menu>
+                </div>
+                <div fxFlex="100%" fxLayout="column">
+                    <app-documentation
+                        [config]="config"
+                        (context)="contextMenu.next($event)"
+                    ></app-documentation>
+                </div>
             </div>
-        </div>
-    </app-content-section>
+        </app-content-section>
 
-    <app-content-section
-        id="getting-started"
-        name="documentation"
-        title="Getting Started"
-        description=""
-    >
-        <div class="aof-docs-container" fxLayout="row" fxLayoutGap.gt-sm="30px">
-            <div fxHide fxFlex.gt-sm="210px" fxShow.gt-sm="true">
-                <app-context-menu
-                    name="docs"
-                    [items]="contextMenu$ | async"
-                ></app-context-menu>
-            </div>
-            <div fxFlex="100%" fxLayout="column">
-                <app-documentation
-                    [config]="config"
-                    (context)="contextMenu.next($event)"
-                ></app-documentation>
-            </div>
-        </div>
-    </app-content-section>
+        <app-content-section
+            name="contributions"
+            title="Contributions"
+            description="We love contributions, help us make Angular On Fire even better!"
+        >
+            <p>
+                There is always room for improvement, and we are always
+                accepting pull requests bug fixes and improvements.
+            </p>
+            <p>
+                All you have to do is submit a PR following the guidelines in
+                the template and we will take a look as son as we can.
+            </p>
+        </app-content-section>
 
-    <app-content-section
-        name="contributions"
-        title="Contributions"
-        description="We love contributions, help us make Angular On Fire even better!"
-    >
-        <p>
-            There is always room for improvement, and we are always accepting
-            pull requests bug fixes and improvements.
-        </p>
-        <p>
-            All you have to do is submit a PR following the guidelines in the
-            template and we will take a look as son as we can.
-        </p>
-    </app-content-section>
+        <app-footer #footerRef></app-footer>
 
-    <app-footer></app-footer>
-
-    <app-scroll-top [target]="jumbotronRef.element"></app-scroll-top>
+        <app-scroll-top
+            [target]="jumbotronRef.element"
+            [footerRef]="footerRef"
+        ></app-scroll-top>
+    </div>
 </div>

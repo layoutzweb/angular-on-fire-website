@@ -2,13 +2,28 @@
 @import '../../../partials/breakpoints';
 
 .aof-scroll-top {
-    position: fixed;
-    right: 40px;
+    position: sticky;
+    left: 100%;
     bottom: 0;
     font-size: 38px;
-    font-weight: 900;
+    width: 86px;
+    height: 86px;
+    z-index: 1000;
 
     a {
-        color: black;
+        position: relative;
+        bottom: 0;
+        color: $primaryColor;
+        transition: bottom 0.4s;
+
+        &:hover {
+            bottom: 6px;
+        }
+    }
+
+    &.aof-at-bottom {
+        position: absolute;
+        right: 0;
+        left: auto;
     }
 }
