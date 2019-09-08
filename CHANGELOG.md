@@ -1,3 +1,12 @@
+## [0.0.1-5](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-4...0.0.1-5) (2019-09-08)
+
+
+### Bug Fixes
+
+* **documentation:** fix documentation display overflow because of img ([3ab94fe](https://github.com/layoutzweb/angular-on-fire-website/commit/3ab94fe))
+
+
+
 ## [0.0.1-4](https://github.com/layoutzweb/angular-on-fire-website/compare/0.0.1-3...0.0.1-4) (2019-09-03)
 
 
