@@ -2,6 +2,12 @@
     height: 500px;
 }
 
+.aof-page {
+    & > div {
+        position: relative;
+    }
+}
+
 @import '../partials/colors';
 @import './partials/hero';
 @import './partials/flames';

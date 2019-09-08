@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     ViewEncapsulation,
 } from '@angular/core'
 
@@ -11,4 +12,6 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class FooterComponent {}
+export class FooterComponent {
+    constructor(public element: ElementRef) {}
+}
